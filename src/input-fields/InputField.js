@@ -46,9 +46,9 @@ const InputField = ({
     else setVal('')
   }
   const optSelect = (val, event) => {
+    console.log('option selected', val)
     event.stopPropagation()
 
-    console.log('option selected', val)
     setDdClicked(true)
     setActive(false)
     setDisplaylDrop(false)
