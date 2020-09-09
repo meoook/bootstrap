@@ -1,0 +1,58 @@
+#grid {
+  .row {
+    border: 2px solid $warning;
+    box-sizing: content-box;
+  }
+  .col {
+    background: pink;
+    outline: 1px solid red;
+  }
+}
+// @mixin grid-generator($size, $grid-columns) {
+// 	@for $i from 1 through $grid-columns {
+// 		.col-#{$size}-#{$i}-#{$grid-columns} {
+//       width: percentage($i / $grid-columns);
+//       flex: 0 0 percentage($i / $grid-columns);
+// 		}
+// 	}
+// }
+
+// @mixin respond-from($media) {
+// 	@if $media == xs {
+// 		@media (min-width: 0px)  { @content; }
+// 	} @else if $media == sm {
+// 		@media (min-width: 768px) { @content; }
+// 	} @else if $media == md {
+// 		@media (min-width: 1200) { @content; }
+// 	} @else if $media == lg {
+// 		@media (min-width: 1440) { @content; }
+// 	} @else if $media == xl {
+// 		@media (min-width: 1800) { @content; }
+// 	}
+// }
+@mixin grid-generator($grid-columns) {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i} {
+      width: percentage($i / $grid-columns);
+      flex: 0 0 percentage($i / $grid-columns);
+    }
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  &.around {
+    justify-content: space-around;
+  }
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.col {
+  width: 100%;
+  flex: 0 0 100%;
+}
+@include grid-generator(12);

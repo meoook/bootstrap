@@ -1,89 +1,93 @@
-import React, { useContext } from "react"
+import React from 'react'
 // App icons
-import { ReactComponent as SvgAddCircle } from "../IMG/add_circle_out.svg"
-import { ReactComponent as SvgAttantion } from "../IMG/attantion.svg"
-import { ReactComponent as SvgApartment } from "../IMG/apartment.svg"
-import { ReactComponent as SvgSearch } from "../IMG/search.svg"
-import { ReactComponent as SvgLanguage } from "../IMG/language.svg"
-import { ReactComponent as SvgFolder } from "../IMG/folder.svg"
-import { ReactComponent as SvgFolderOut } from "../IMG/folder_out.svg"
-import { ReactComponent as SvgDescr } from "../IMG/description.svg"
-import { ReactComponent as SvgCloudIn } from "../IMG/backup.svg"
-import { ReactComponent as SvgSummary } from "../IMG/storage.svg"
-import { ReactComponent as SvgWork } from "../IMG/work.svg"
-import { ReactComponent as SvgWorkOut } from "../IMG/work_out.svg"
-import { ReactComponent as SvgArrows } from "../IMG/arrows.svg"
-import { ReactComponent as SvgSettings } from "../IMG/settings.svg"
+import { ReactComponent as SvgAddCircle } from '../IMG/add_circle_out.svg'
+import { ReactComponent as SvgApartment } from '../IMG/apartment.svg'
+import { ReactComponent as SvgSearch } from '../IMG/search.svg'
+import { ReactComponent as SvgLanguage } from '../IMG/language.svg'
+import { ReactComponent as SvgFolder } from '../IMG/folder.svg'
+import { ReactComponent as SvgFolderOut } from '../IMG/folder_out.svg'
+import { ReactComponent as SvgDescr } from '../IMG/description.svg'
+import { ReactComponent as SvgCloudIn } from '../IMG/backup.svg'
+import { ReactComponent as SvgSummary } from '../IMG/storage.svg'
+import { ReactComponent as SvgWork } from '../IMG/work.svg'
+import { ReactComponent as SvgWorkOut } from '../IMG/work_out.svg'
+import { ReactComponent as SvgArrows } from '../IMG/arrows.svg'
+import { ReactComponent as SvgSettings } from '../IMG/settings.svg'
+// Big
+import { ReactComponent as SvgAttantion } from '../IMG/attantion.svg'
+import { ReactComponent as SvgQuestion } from '../IMG/question.svg'
 // Lang icons
-import { ReactComponent as SvgWorld } from "../IMG/lang/world.svg"
-import { ReactComponent as SvgRussian } from "../IMG/lang/russian.svg"
-import { ReactComponent as SvgEnglish } from "../IMG/lang/english.svg"
-import { ReactComponent as SvgGerman } from "../IMG/lang/german.svg"
-import { ReactComponent as SvgChinese } from "../IMG/lang/chinese.svg"
-import { ReactComponent as SvgSpanish } from "../IMG/lang/spanish.svg"
+import { ReactComponent as SvgWorld } from '../IMG/lang/world.svg'
+import { ReactComponent as SvgRussian } from '../IMG/lang/russian.svg'
+import { ReactComponent as SvgEnglish } from '../IMG/lang/english.svg'
+import { ReactComponent as SvgGerman } from '../IMG/lang/german.svg'
+import { ReactComponent as SvgChinese } from '../IMG/lang/chinese.svg'
+import { ReactComponent as SvgSpanish } from '../IMG/lang/spanish.svg'
 // Message icons
-import { ReactComponent as SvgInfo } from "../IMG/notification.svg"
-import { ReactComponent as SvgSuccess } from "../IMG/success.svg"
-import { ReactComponent as SvgWarning } from "../IMG/warning.svg"
-import { ReactComponent as SvgError } from "../IMG/error.svg"
+import { ReactComponent as SvgInfo } from '../IMG/notification.svg'
+import { ReactComponent as SvgSuccess } from '../IMG/success.svg'
+import { ReactComponent as SvgWarning } from '../IMG/warning.svg'
+import { ReactComponent as SvgError } from '../IMG/error.svg'
 // App images
-import ImgEmpty from "../IMG/images/no-image.png"
-import ImgExtensions from "../IMG/images/extensions.jpg"
-import ImgExtensions2 from "../IMG/images/extensions2.png"
+import ImgEmpty from '../IMG/images/no-image.png'
+import ImgExtensions from '../IMG/images/extensions.jpg'
+import ImgExtensions2 from '../IMG/images/extensions2.png'
 
 export const IcoGet = ({ name }) => {
   switch (name) {
-    case "success":
+    case 'success':
       return <SvgSuccess />
-    case "warning":
+    case 'warning':
       return <SvgWarning />
-    case "error":
+    case 'error':
       return <SvgError />
-    case "info":
+    case 'info':
       return <SvgInfo />
-    case "addcircle":
+    case 'addcircle':
       return <SvgAddCircle />
-    case "arrows":
+    case 'arrows':
       return <SvgArrows />
-    case "attantion":
-      return <SvgAttantion />
-    case "settings":
+    case 'settings':
       return <SvgSettings />
-    case "apartment":
+    case 'apartment':
       return <SvgApartment />
-    case "cloudin":
+    case 'cloudin':
       return <SvgCloudIn />
-    case "descr":
+    case 'descr':
       return <SvgDescr />
-    case "folder":
+    case 'folder':
       return <SvgFolder />
-    case "foldero":
+    case 'foldero':
       return <SvgFolderOut />
-    case "language":
+    case 'language':
       return <SvgLanguage />
-    case "search":
+    case 'search':
       return <SvgSearch />
-    case "summary":
+    case 'summary':
       return <SvgSummary />
-    case "work":
+    case 'work':
       return <SvgWork />
-    case "worko":
+    case 'worko':
       return <SvgWorkOut />
+    case 'attantion':
+      return <SvgAttantion />
+    case 'question':
+      return <SvgQuestion />
     default:
       return <></> // mb null ?
   }
 }
 export const IcoLang = ({ name }) => {
   switch (name) {
-    case "german":
+    case 'german':
       return <SvgGerman />
-    case "english":
+    case 'english':
       return <SvgEnglish />
-    case "spanish":
+    case 'spanish':
       return <SvgSpanish />
-    case "russian":
+    case 'russian':
       return <SvgRussian />
-    case "chinese":
+    case 'chinese':
       return <SvgChinese />
     default:
       return <SvgWorld />
@@ -92,9 +96,9 @@ export const IcoLang = ({ name }) => {
 
 export const DisplayImage = ({ name }) => {
   switch (name) {
-    case "extensions":
+    case 'extensions':
       return <img src={ImgExtensions} alt='extensions' />
-    case "extensions2":
+    case 'extensions2':
       return <img src={ImgExtensions2} alt='extensions' />
     default:
       return <img src={ImgEmpty} alt='' />

@@ -9,10 +9,12 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   color: $text;
   font-size: $font-s;
+  line-height: $font-s + $font-s * 0.6;
   font-weight: 400;
   @extend %bg-body;
 }
@@ -25,6 +27,7 @@ input {
 //   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 //     monospace;
 // }
+// TODO: Remove
 section {
   padding: $padding;
   margin: $padding;
@@ -33,4 +36,5 @@ section {
 
 svg {
   fill: $text;
+  pointer-events: none;
 }

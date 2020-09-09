@@ -1,5 +1,6 @@
 // Sizing
 $padding: 9px;
+$p-elem: 20px;
 $radius: 4px;
 $in-w: 300px;
 $font-s: 16px;
@@ -32,11 +33,11 @@ $info: #48c7d5;
 
 %absolute {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  // bottom: 0;
+  // right: 0;
   top: 0;
   left: 0;
-  content: "";
+  content: '';
 }
 
 // @extend %bg-body;

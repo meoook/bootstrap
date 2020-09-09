@@ -1,18 +1,15 @@
-import React, { useState } from "react"
-import { IcoGet, IcoLang } from "./components/icons"
-import Loader from "./components/static/Loader"
+import React from 'react'
+import DisplayIcons from './display/DisplayIcons'
+import DisplayLoaders from './display/DisplayLoaders'
+import DisplayGrid from './display/DisplayGrid'
 // import { In } from './input-fields/InputField'
 
 function App() {
   return (
     <div className='container'>
-      <section>
-        <IcoGet name='success' />
-        <IcoGet name='warning' />
-      </section>
-      <section>
-        <Loader />
-      </section>
+      <DisplayIcons />
+      <DisplayLoaders />
+      <DisplayGrid />
     </div>
   )
 }
