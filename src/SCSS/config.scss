@@ -1,0 +1,47 @@
+// Sizing
+$padding: 9px;
+$radius: 4px;
+$in-w: 300px;
+$font-s: 16px;
+$p-ico: 65px;
+
+// Gray Scale
+$texth: #ffffff;
+$text: #909099;
+$textd: #505059;
+
+$active: #2c2c35;
+$box: #282831;
+$footer: #25252e;
+
+$menu: #202029;
+$shadow: #101019;
+
+// App colors
+$t-help: #9bdc8b;
+
+$brand: #7545e2; // #90caf9
+$success: #63c84a;
+$error: #f63868;
+$warning: #f19037;
+$info: #48c7d5;
+
+%bg-body {
+  background: linear-gradient(180deg, $menu 0%, #16161a 100%);
+}
+
+%absolute {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  left: 0;
+  content: "";
+}
+
+// @extend %bg-body;
+
+// @mixin shadow($color: $shadow, $offset: $indent) {
+//   box-shadow: 0 $offset/2 $offset $color !important;
+// }
+// @include shadow();
