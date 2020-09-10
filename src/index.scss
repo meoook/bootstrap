@@ -6,8 +6,17 @@
 .container {
   width: 50%;
   margin: 0 auto;
-  height: 100vh;
-  padding-top: 130px;
+  padding-top: 30px;
+}
+#grid {
+  .row {
+    border: 2px solid $warning;
+    box-sizing: content-box;
+  }
+  .col {
+    background: pink;
+    outline: 1px solid red;
+  }
 }
 
 .input {
@@ -121,13 +130,9 @@
       display: inline-flex;
       flex: 0 0 auto;
       padding: 2px;
-      margin: 0;
-      outline: 0;
-      border: 0;
       border-radius: 50%;
       background-color: transparent;
       transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-      color: $texth;
       cursor: pointer;
       // overflow: visible;
       &:hover {

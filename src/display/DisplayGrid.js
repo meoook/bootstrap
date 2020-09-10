@@ -17,12 +17,16 @@ const DisplayGrid = (props) => {
         <div>around</div>
         <div>around</div>
       </div>
+      <div className='row justify'>
+        <div>justify</div>
+        <div>justify</div>
+      </div>
       <div className='row'>
         <div className='col'>col</div>
         <div className='col'>col</div>
         <div className='col'>col</div>
       </div>
-      <div className='row'>
+      <div className='row long'>
         <div className='col col-12'>col-12</div>
         {arr.map((idx) => (
           <React.Fragment key={idx}>

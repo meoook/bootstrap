@@ -31,9 +31,9 @@ const DisplayIcons = (props) => {
   ]
   return (
     <section>
-      <div className='row around'>
+      <div className='row long'>
         {icoArr.map((item) => (
-          <div key={item} className='column'>
+          <div key={item} className='col-2 column center'>
             <div>
               <IcoGet name={item} />
             </div>
@@ -41,10 +41,10 @@ const DisplayIcons = (props) => {
           </div>
         ))}
       </div>
-      <div className='row'>
+      <div className='row long'>
         {icoLang.map((item) => (
-          <div key={item} className='column'>
-            <div>
+          <div key={item} className='col-3 column center'>
+            <div style={{ height: '2em', width: '2em' }}>
               <IcoLang name={item} />
             </div>
             <div>{item}</div>
@@ -52,7 +52,7 @@ const DisplayIcons = (props) => {
         ))}
       </div>
       <div className='row'>
-        <div className='column'>
+        <div className='col-3 column center'>
           <div>
             <IcoGet name='attantion' />
           </div>

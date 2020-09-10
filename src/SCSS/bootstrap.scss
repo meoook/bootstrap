@@ -1,13 +1,3 @@
-#grid {
-  .row {
-    border: 2px solid $warning;
-    box-sizing: content-box;
-  }
-  .col {
-    background: pink;
-    outline: 1px solid red;
-  }
-}
 // @mixin grid-generator($size, $grid-columns) {
 // 	@for $i from 1 through $grid-columns {
 // 		.col-#{$size}-#{$i}-#{$grid-columns} {
@@ -33,26 +23,36 @@
 @mixin grid-generator($grid-columns) {
   @for $i from 1 through $grid-columns {
     .col-#{$i} {
-      width: percentage($i / $grid-columns);
+      // width: percentage($i / $grid-columns);
       flex: 0 0 percentage($i / $grid-columns);
     }
   }
 }
 
-.row {
+.row,
+.column {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  &.long {
+    flex-wrap: wrap;
+  }
+  &.justify {
+    justify-content: space-between;
+  }
   &.around {
     justify-content: space-around;
   }
+  &.center {
+    align-items: center;
+  }
+}
+.row {
+  flex-direction: row;
 }
 .column {
-  display: flex;
   flex-direction: column;
 }
 .col {
-  width: 100%;
-  flex: 0 0 100%;
+  // width: 100%;
+  flex: 1 0;
 }
 @include grid-generator(12);
