@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InputBasic = ({
+const InputFieldConstructor = ({
   val, // Must be set for controled input
   setVal, // Must be set for controled input
   label = 'Введите значение', // label with out or placeholder
@@ -9,6 +9,7 @@ const InputBasic = ({
   help = '', // help text onHover info Icon
   out = false, // with outline border & label control
   onFinish = null, // onBlur or keyEnter Callback
+  choices = [], // to display dropdown
 }) => {
   return (
     <div className='input'>
@@ -16,7 +17,7 @@ const InputBasic = ({
         <div className='input-root icon btns'>
           <input tabIndex='0' type='text' autoComplete='off' required />
           <label>Название</label>
-          <div className='input-btns icons'>
+          <div className='input-btns'>
             <button tabIndex='-1' className='input-btns-x'>
               <span className='input-icons'>
                 <svg focusable='false' viewBox='0 0 24 24' aria-hidden='true'>
@@ -24,7 +25,7 @@ const InputBasic = ({
                 </svg>
               </span>
             </button>
-            <button tabIndex='-1' className='input-btns-m rotate'>
+            <button tabIndex='-1' className='input-btns-i'>
               <span className='input-icons'>
                 <svg focusable='false' viewBox='0 0 24 24' aria-hidden='true'>
                   <path d='M7 10l5 5 5-5z'></path>
@@ -38,12 +39,8 @@ const InputBasic = ({
             </legend>
           </fieldset>
         </div>
-        <div className='md-input-choices'>
-          <div>choice1</div>
-          <div>choice2</div>
-          <div className='active'>choice3</div>
-          <div>choice4</div>
-        </div>
+        <div className='input-error'>This is error text</div>
+        <div className='input-choices'>This is error text</div>
       </div>
     </div>
   )

@@ -13,6 +13,7 @@ import { ReactComponent as SvgWork } from '../IMG/work.svg'
 import { ReactComponent as SvgWorkOut } from '../IMG/work_out.svg'
 import { ReactComponent as SvgArrows } from '../IMG/arrows.svg'
 import { ReactComponent as SvgSettings } from '../IMG/settings.svg'
+import { ReactComponent as SvgCheck } from '../IMG/check.svg'
 // Big
 import { ReactComponent as SvgAttantion } from '../IMG/attantion.svg'
 import { ReactComponent as SvgQuestion } from '../IMG/question.svg'
@@ -43,8 +44,8 @@ export const IcoGet = ({ name }) => {
       return <SvgError />
     case 'info':
       return <SvgInfo />
-    case 'addcircle':
-      return <SvgAddCircle />
+    case 'check':
+      return <SvgCheck />
     case 'arrows':
       return <SvgArrows />
     case 'settings':
@@ -69,12 +70,14 @@ export const IcoGet = ({ name }) => {
       return <SvgWork />
     case 'worko':
       return <SvgWorkOut />
-    case 'attantion':
+    case 'attantion': // Remove from Icon
       return <SvgAttantion />
-    case 'question':
+    case 'question': // and place to DisplaySVG
       return <SvgQuestion />
+    case 'addcircle':
+      return <SvgAddCircle /> // and this
     default:
-      return <></> // mb null ?
+      return null
   }
 }
 export const IcoLang = ({ name }) => {

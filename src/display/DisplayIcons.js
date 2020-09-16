@@ -20,6 +20,7 @@ const DisplayIcons = (props) => {
     'summary',
     'work',
     'worko',
+    'check',
   ]
   const icoLang = [
     'no lang',
@@ -41,6 +42,7 @@ const DisplayIcons = (props) => {
           </div>
         ))}
       </div>
+      <hr />
       <div className='row long'>
         {icoLang.map((item) => (
           <div key={item} className='col-3 column center'>
@@ -51,6 +53,7 @@ const DisplayIcons = (props) => {
           </div>
         ))}
       </div>
+      <hr />
       <div className='row'>
         <div className='col-3 column center'>
           <div>

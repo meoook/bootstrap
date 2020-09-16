@@ -1,12 +1,18 @@
+// Media (from small to xl)
+$res-s: 600px;
+$res-m: 768px;
+$res-l: 992px;
+$res-xl: 1200px;
 // Sizing
-$indent: 5px;
+$font-s: 1rem;
+$indent: 0.25rem;
 $padding: 10px;
 $radius: 6px;
+$bd: 1px;
 $p-ico: 65px;
-$p-elem: 20px;
 $in-w: 300px;
-$font-s: 16px;
-
+// App vals
+$timer: 0.9s;
 // Gray Scale
 $texth: #ffffff;
 $text: #909099;
@@ -40,9 +46,77 @@ $info: #48c7d5;
   content: '';
 }
 
-// @extend %bg-body;
+%bd {
+  border: $bd solid rgba($texth, 0.15);
+  border-radius: $radius;
+}
 
-// @mixin shadow($color: $shadow, $offset: $indent) {
-//   box-shadow: 0 $offset/2 $offset $color !important;
-// }
+%shadow-light {
+  box-shadow: 2px 4px 6px rgba($shadow, 0.2);
+}
+%shadow-light-text {
+  text-shadow: 0px 0px 6px rgba($shadow, 0.2);
+}
+
+%disabled {
+  &[disabled] {
+    cursor: initial;
+    transform: none !important;
+    color: $textd !important;
+    border-color: $textd !important;
+    background-size: 100px 100px !important;
+    background-color: transparent !important;
+    background-image: linear-gradient(
+      45deg,
+      rgba($texth, 0.05) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba($texth, 0.05) 50%,
+      rgba($texth, 0.05) 75%,
+      transparent 75%,
+      transparent
+    ) !important;
+    & svg {
+      fill: $textd !important;
+    }
+  }
+}
+
+// @extend %absolute;
+
 // @include shadow();
+
+@mixin colors($color, $hover: false) {
+  background: $color;
+  color: lighten($color, 30%);
+  border-color: lighten($color, 10%);
+  & svg {
+    fill: lighten($color, 30%);
+  }
+  @if $hover {
+    &:hover {
+      background: lighten($color, 6%);
+    }
+  }
+  &:active {
+    background: darken($color, 1%);
+  }
+}
+
+@mixin colors-all {
+  &-brand {
+    @include colors($brand, true);
+  }
+  &-success {
+    @include colors($success, true);
+  }
+  &-info {
+    @include colors($info, true);
+  }
+  &-warning {
+    @include colors($warning, true);
+  }
+  &-error {
+    @include colors($error, true);
+  }
+}

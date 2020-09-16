@@ -56,3 +56,237 @@
   flex: 1 0;
 }
 @include grid-generator(12);
+
+.btn {
+  @extend %shadow-light;
+  @extend %shadow-light-text;
+  @extend %bd;
+  @extend %disabled;
+  @include colors($input, true);
+  svg {
+    // must be placed between colors include to fill with text color
+    fill: $texth;
+  }
+  @include colors-all;
+  position: relative;
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  min-width: 100px;
+  padding: $padding / 2 $padding;
+  color: $texth;
+  font-weight: bold;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all $timer;
+  &:hover {
+    transform: perspective(100px) translateZ(2px);
+  }
+  &:active {
+    transform: perspective(100px) translateZ(-1px);
+  }
+  svg {
+    // fill: $texth;
+    width: 1.2em;
+    height: 1.2em;
+    &:first-child {
+      margin-right: $padding / 2;
+    }
+    &:last-child {
+      margin-left: $padding / 2;
+    }
+  }
+  &.big {
+    font-size: $font-s + $indent;
+    min-width: 120px;
+    padding: $padding $padding * 2;
+  }
+  &.small {
+    font-size: $font-s - $indent / 2;
+    min-width: 80px;
+    padding: 0 $padding / 2;
+  }
+  &-nop {
+    min-width: 1.5em !important;
+  }
+  &-ico {
+    min-width: 1.2em !important;
+    width: 2em !important;
+    height: 2em !important;
+    padding: 2px !important;
+    border-radius: 50%;
+    border-width: 0;
+    background-color: transparent;
+    transform: none !important;
+    box-shadow: none;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    overflow: visible;
+    &:hover {
+      background-color: rgba($texth, 0.06);
+    }
+  }
+}
+
+.control {
+  &-group {
+    display: flex;
+    align-items: stretch;
+    border-radius: $radius;
+    & > * {
+      @extend %bd;
+      border-radius: 0;
+      border-width: $bd;
+      padding: $padding / 2 $padding;
+      line-height: normal;
+      transform: none !important;
+      min-width: unset;
+    }
+    & > *:not(button) {
+      background: $elem;
+      color: $texth;
+    }
+    & > *:not(:first-child) {
+      border-left-width: 0;
+    }
+    & > *:first-child {
+      border-top-left-radius: inherit;
+      border-bottom-left-radius: inherit;
+    }
+    & > *:last-child {
+      border-top-right-radius: inherit;
+      border-bottom-right-radius: inherit;
+    }
+    &.big {
+      font-size: $font-s + $indent;
+      & > * {
+        padding: $padding $padding * 2;
+      }
+    }
+    &.small {
+      font-size: $font-s - $indent / 2;
+      & > * {
+        padding: $padding / 4 $padding/ 2;
+      }
+    }
+  }
+}
+
+.switch {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all $timer;
+  &.big {
+    font-size: $font-s + $indent;
+  }
+  &.small {
+    font-size: $font-s - $indent;
+  }
+  &-btn {
+    @extend %bd;
+    height: 1em;
+    width: 1em;
+    border-radius: $indent;
+    transition: all $timer;
+    box-sizing: content-box;
+  }
+  &-mark {
+    border-radius: 50%;
+    transition: all $timer;
+    opacity: 0;
+    margin: 1px;
+    height: calc(1em - 2px);
+    width: calc(1em - 2px);
+  }
+  & label {
+    margin: 0 $padding;
+    pointer-events: none;
+    font-weight: 500;
+  }
+  &-check {
+    .switch-btn {
+      border-radius: $indent;
+    }
+    .switch-mark {
+      margin: 0px;
+      line-height: normal;
+    }
+    svg {
+      height: 1em;
+      width: 1em;
+      fill: $texth;
+    }
+  }
+  &-radio {
+    .switch-btn {
+      border-radius: 50%;
+      background: transparent !important;
+    }
+    .switch-mark {
+      background: $brand;
+    }
+    &[disabled] .switch-mark {
+      background-color: $textd;
+    }
+  }
+  &-toggle {
+    .switch-btn {
+      display: inline-flex;
+      width: 1.6em;
+      border-radius: calc(1.2em / 2);
+    }
+    .switch-mark {
+      opacity: 1;
+      background: $texth;
+    }
+    &.active {
+      .switch-mark {
+        transform: translateX(0.6em);
+      }
+    }
+    &[disabled] .switch-mark {
+      background-color: $textd;
+    }
+  }
+  &:hover {
+    .switch-btn {
+      border-color: rgba($texth, 0.25);
+    }
+    label {
+      color: $texth;
+    }
+  }
+  &.active {
+    .switch-btn {
+      background: $brand;
+    }
+    label {
+      color: $texth;
+    }
+    &:hover {
+      border-color: rgba($texth, 0.1);
+    }
+    .switch-mark {
+      opacity: 1;
+    }
+  }
+  &[disabled] > * {
+    background: transparent !important;
+    border-color: rgba($textd, 0.15) !important;
+    color: $textd !important;
+    cursor: initial;
+    svg {
+      fill: $textd;
+    }
+  }
+}
+
+.card {
+  &-grid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
