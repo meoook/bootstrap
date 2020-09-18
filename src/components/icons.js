@@ -14,6 +14,8 @@ import { ReactComponent as SvgWorkOut } from '../IMG/work_out.svg'
 import { ReactComponent as SvgArrows } from '../IMG/arrows.svg'
 import { ReactComponent as SvgSettings } from '../IMG/settings.svg'
 import { ReactComponent as SvgCheck } from '../IMG/check.svg'
+import { ReactComponent as SvgClose } from '../IMG/close.svg'
+import { ReactComponent as SvgArrDown } from '../IMG/arr-dropdown.svg'
 // Big
 import { ReactComponent as SvgAttantion } from '../IMG/attantion.svg'
 import { ReactComponent as SvgQuestion } from '../IMG/question.svg'
@@ -44,8 +46,12 @@ export const IcoGet = ({ name }) => {
       return <SvgError />
     case 'info':
       return <SvgInfo />
+    case 'close':
+      return <SvgClose />
     case 'check':
       return <SvgCheck />
+    case 'arrdown':
+      return <SvgArrDown />
     case 'arrows':
       return <SvgArrows />
     case 'settings':

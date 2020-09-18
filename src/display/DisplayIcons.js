@@ -21,6 +21,8 @@ const DisplayIcons = (props) => {
     'work',
     'worko',
     'check',
+    'arrdown',
+    'close',
   ]
   const icoLang = [
     'no lang',

@@ -11,11 +11,13 @@ const InputFieldConstructor = ({
   onFinish = null, // onBlur or keyEnter Callback
   choices = [], // to display dropdown
 }) => {
+  // sccs input-tmp
   return (
     <div className='input'>
       <div className='input-wrapper'>
         <div className='input-root icon btns'>
           <input tabIndex='0' type='text' autoComplete='off' required />
+          <div className='input-icon'></div>
           <label>Название</label>
           <div className='input-btns'>
             <button tabIndex='-1' className='input-btns-x'>

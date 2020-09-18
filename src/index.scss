@@ -21,7 +21,7 @@
 }
 
 #inputs {
-  .row {
-    height: 60px;
+  & > .row {
+    height: 105px;
   }
 }

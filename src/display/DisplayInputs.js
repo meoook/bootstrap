@@ -1,19 +1,42 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
+import InputFieldRoot from '../components/input-fields/InputFieldRoot'
 
 const DisplayInputs = () => {
-  console.log('Display input render')
+  const [val, setVal] = useState('')
 
-  useEffect(() => {
-    console.log('Rerender call')
-  })
+  console.log('Display input render')
 
   return (
     <section id='inputs'>
       <div className='row around'>
-        {/* <InputField /> */}
-        <div>no</div>
-        <div>no</div>
-        <div>no</div>
+        <InputFieldRoot val={val} setVal={setVal} />
+      </div>
+      <hr />
+      <div className='row around'>
+        <InputFieldRoot val={val} setVal={setVal} outColor='warning' />
+      </div>
+      <hr />
+      <div className='row around'>
+        <div>
+          <InputFieldRoot
+            val={val}
+            setVal={setVal}
+            outColor='success'
+            icon='summary'
+            label='Название'
+          />
+        </div>
+      </div>
+      <hr />
+      <div className='row around'>
+        <div>
+          <InputFieldRoot
+            val={val}
+            setVal={setVal}
+            icon='summary'
+            label='Название'
+          />
+        </div>
       </div>
       <hr />
     </section>

@@ -61,12 +61,8 @@
   @extend %shadow-light;
   @extend %shadow-light-text;
   @extend %bd;
-  @extend %disabled;
+  @extend %disabled-bg;
   @include colors($input, true);
-  svg {
-    // must be placed between colors include to fill with text color
-    fill: $texth;
-  }
   @include colors-all;
   position: relative;
   display: inline-flex;
@@ -121,7 +117,7 @@
     background-color: transparent;
     transform: none !important;
     box-shadow: none;
-    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: background-color $timer / 2 cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     overflow: visible;
     &:hover {
       background-color: rgba($texth, 0.06);
@@ -273,13 +269,7 @@
     }
   }
   &[disabled] > * {
-    background: transparent !important;
-    border-color: rgba($textd, 0.15) !important;
-    color: $textd !important;
-    cursor: initial;
-    svg {
-      fill: $textd;
-    }
+    @extend %disabled-cfg;
   }
 }
 

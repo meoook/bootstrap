@@ -1,8 +1,8 @@
 .input {
+  background: transparent;
   position: relative;
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
+  display: flex;
+  align-items: center;
   width: $in-w;
   & label {
     position: absolute;
@@ -15,71 +15,78 @@
       transform $timer cubic-bezier(0, 0, 0.2, 1) 0ms;
     pointer-events: none;
   }
-  & input {
-    background: darkgreen;
-    flex-grow: 1;
-    min-width: 30px;
-    padding: $padding / 2;
-    &:focus ~,
-    &:valid ~ {
-      label {
-        transform: translate(14px, -6px) scale(0.75);
-        color: $brand;
-      }
-      fieldset {
-        border-color: $brand;
-        border-width: 2px;
-        legend {
-          max-width: 1000px;
-          transition: max-width 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
-        }
-      }
-    }
-  }
-  & fieldset {
-    @extend %absolute;
-    top: -5px;
-    padding: 0 8px;
-    overflow: hidden;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: inherit;
-    pointer-events: none;
-    & legend {
-      width: auto;
-      height: 11px;
-      display: block;
-      padding: 0;
-      font-size: 0.75em;
-      max-width: 0.01px;
-      text-align: left;
-      transition: max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-      visibility: hidden;
-      & > span {
-        display: inline-block;
-        padding-left: 5px;
-        padding-right: 5px;
-        pointer-events: none;
-      }
-    }
+  &-wrapper {
+    flex-direction: column;
+    width: 100%;
   }
   &-root {
     position: relative;
-    width: 100%;
     display: inline-flex;
     align-items: center;
-    padding: $padding / 2;
+    padding: $padding;
     cursor: text;
     border-radius: $radius;
     vertical-align: top;
+
     &.icon {
-      padding-left: 35px;
-    }
-    &.btn {
       padding-right: 35px;
+      .input-btns {
+        opacity: 1;
+      }
     }
-    &.btns {
+    &.icons {
       padding-right: 65px;
+    }
+    & input {
+      color: $texth;
+      flex-grow: 1;
+      padding: $padding 4px $padding 6px;
+      &:focus ~,
+      &:valid ~ {
+        label {
+          transform: translate(14px, -6px) scale(0.75);
+          color: #90caf9;
+        }
+        fieldset {
+          border-color: #90caf9;
+          border-width: 2px;
+          legend {
+            max-width: 1000px;
+            transition: max-width 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
+          }
+        }
+      }
+    }
+    fieldset {
+      position: absolute;
+      top: -5px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      padding: 0 8px;
+      overflow: hidden;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: inherit;
+      pointer-events: none;
+      & legend {
+        width: auto;
+        height: 11px;
+        display: block;
+        padding: 0;
+        font-size: 0.75em;
+        max-width: 0.01px;
+        text-align: left;
+        transition: max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+        visibility: hidden;
+        & > span {
+          display: inline-block;
+          padding-left: 5px;
+          padding-right: 5px;
+          pointer-events: none;
+        }
+      }
     }
     &:hover {
       .input-btns {
@@ -92,24 +99,21 @@
       }
     }
   }
-  &-icon {
-    position: absolute;
-    top: calc(50% - 16px);
-    left: $padding / 2;
-    background: red;
-    width: 2em !important;
-    height: 2em !important;
-    padding: 2px !important;
-    display: inline-flex;
-    justify-content: space-around;
-    align-items: center;
-  }
   &-btns {
     position: absolute;
-    top: calc(50% - 16px);
-    right: $padding / 2;
-    display: flex;
-    background: red;
+    top: calc(50% - 14px);
+    right: $padding - 1px;
+    opacity: 0;
+    & > button {
+      & > span {
+        width: 100%;
+        display: flex;
+        align-items: inherit;
+        justify-content: inherit;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    }
     &-x {
       visibility: hidden;
     }
@@ -117,7 +121,6 @@
       transform: rotate(180deg);
     }
     svg {
-      margin: 0 !important;
       display: inline-block;
       width: 1em;
       height: 1em;

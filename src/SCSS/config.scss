@@ -58,14 +58,28 @@ $info: #48c7d5;
   text-shadow: 0px 0px 6px rgba($shadow, 0.2);
 }
 
+%disabled-cfg {
+  cursor: initial;
+  transform: none !important;
+  color: $textd !important;
+  background-color: transparent !important;
+  border-color: currentColor !important;
+  // border-color: rgba($textd, 0.15) !important;
+  // & svg {
+  // fill: $textd !important;
+  // }
+}
+
 %disabled {
   &[disabled] {
-    cursor: initial;
-    transform: none !important;
-    color: $textd !important;
-    border-color: $textd !important;
+    @extend %disabled-cfg;
+  }
+}
+
+%disabled-bg {
+  &[disabled] {
+    @extend %disabled-cfg;
     background-size: 100px 100px !important;
-    background-color: transparent !important;
     background-image: linear-gradient(
       45deg,
       rgba($texth, 0.05) 25%,
@@ -76,9 +90,6 @@ $info: #48c7d5;
       transparent 75%,
       transparent
     ) !important;
-    & svg {
-      fill: $textd !important;
-    }
   }
 }
 
@@ -86,13 +97,26 @@ $info: #48c7d5;
 
 // @include shadow();
 
+@mixin color($color: $texth, $bd: false, $bg: false, $hover: false) {
+  color: $color;
+  @if $bd {
+    border-color: $color;
+    outline-color: $color;
+  }
+  @if $bg {
+    background: darken($color, 6%);
+    @if $hover {
+      &:hover {
+        background: darken($color, 5%);
+      }
+    }
+  }
+}
+
 @mixin colors($color, $hover: false) {
   background: $color;
   color: lighten($color, 30%);
   border-color: lighten($color, 10%);
-  & svg {
-    fill: lighten($color, 30%);
-  }
   @if $hover {
     &:hover {
       background: lighten($color, 6%);
