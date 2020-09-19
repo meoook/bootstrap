@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { IcoGet } from '../icons'
+import React from "react"
+import { IcoGet } from "../icons"
 
 const InputFieldChoices = ({ choices, select, loading = false }) => {
   return (
@@ -9,9 +9,7 @@ const InputFieldChoices = ({ choices, select, loading = false }) => {
       ) : !choices.length ? (
         <div>Нет доступных вариантов</div>
       ) : (
-        choices.map((item) => (
-          <ChoiceItem key={item.name} item={item} select={select} />
-        ))
+        choices.map((item) => <ChoiceItem key={item.name} item={item} select={select} />)
       )}
     </div>
   )
@@ -21,7 +19,7 @@ export default InputFieldChoices
 
 const ChoiceItem = ({ item, select }) => {
   const itemProps = (item) => {
-    if (item.active) return { className: 'active' }
+    if (item.active) return { className: "active" }
     if (item.disabled) return { disabled: true }
     const onClick = () => select(item.name)
     return { onClick }

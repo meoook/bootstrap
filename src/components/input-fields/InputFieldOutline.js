@@ -1,14 +1,12 @@
-import React from 'react'
+import React from "react"
 
 const InputFieldOutline = ({ label, color }) => {
   if (!color) return null
   return (
     <>
-      <label>{label ? label : 'Введите значение'}</label>
+      {Boolean(label) && <label>{label}</label>}
       <fieldset>
-        <legend>
-          <span>{label ? label : 'Введите значение'}</span>
-        </legend>
+        <legend>{Boolean(label) && <span>{label}</span>}</legend>
       </fieldset>
     </>
   )

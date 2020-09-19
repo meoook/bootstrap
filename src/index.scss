@@ -1,11 +1,12 @@
-@import './SCSS/config.scss';
-@import './SCSS/tags.scss';
-@import './SCSS/bootstrap.scss';
-@import './SCSS/inputs.scss';
-@import './SCSS/loaders.scss';
+@import "./SCSS/config.scss";
+@import "./SCSS/tags.scss";
+@import "./SCSS/bootstrap.scss";
+@import "./SCSS/inputs.scss";
+@import "./SCSS/loaders.scss";
 
 .container {
-  width: 50%;
+  width: 95wh;
+  max-width: 900px;
   margin: 0 auto;
   padding-top: 30px;
 }

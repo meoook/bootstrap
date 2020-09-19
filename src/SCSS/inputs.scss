@@ -1,5 +1,6 @@
 .input {
   position: relative;
+  display: inline-table;
   //   display: flex;
   //   flex-direction: column;
   //   align-items: center;
@@ -9,10 +10,9 @@
     top: 0;
     left: 0;
     z-index: 1;
-    transform: translate(14px, 20px) scale(1);
+    transform: translate($padding * 1.5, 12px) scale(1);
     transform-origin: top left;
-    transition: color $timer cubic-bezier(0, 0, 0.2, 1) 0ms,
-      transform $timer cubic-bezier(0, 0, 0.2, 1) 0ms;
+    transition: color $timer cubic-bezier(0, 0, 0.2, 1) 0ms, transform $timer cubic-bezier(0, 0, 0.2, 1) 0ms;
     pointer-events: none;
   }
   & input {
@@ -145,7 +145,7 @@
       min-height: auto;
       padding: 6px 16px;
       font-size: 1rem;
-      font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
       font-weight: 400;
       line-height: 1.5;
       cursor: pointer;
