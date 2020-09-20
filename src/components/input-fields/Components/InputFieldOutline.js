@@ -10,6 +10,8 @@ const InputFieldOutline = ({ label, color }) => {
         return { className: "warning" }
       case "success":
         return { className: "success" }
+      // case "disabled":
+      //   return { className: "disabled" }
       default:
         return
     }

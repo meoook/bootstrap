@@ -54,6 +54,7 @@ const InputTextFieldBuild = ({
   const handleClick = (e) => {
     console.log("Check focused")
     e.stopPropagation()
+    if (disabled) return
     if (inRef.current !== document.activeElement) {
       console.log("Not focused - focusing")
       inRef.current.focus()
@@ -65,6 +66,7 @@ const InputTextFieldBuild = ({
 
   const handleChange = (e) => {
     console.log("Changing input")
+    if (disabled) return
     const value = e.target.value
     setInputVal(value)
     if (chVal) chVal(value)
@@ -73,12 +75,14 @@ const InputTextFieldBuild = ({
 
   const handleKeyPress = (e) => {
     console.log("Key press")
+    if (disabled) return
     if (onFinish && e.key === "Enter") onFinish(inputVal.trim())
   }
 
   const handleReset = (e) => {
     console.log("Reset")
     e.stopPropagation()
+    if (disabled) return
     if (onFinish) onFinish("")
     else setInputVal("")
     if (choices.length) choicesRef.current = choices
@@ -87,6 +91,7 @@ const InputTextFieldBuild = ({
   const handleChoicesToggle = (e) => {
     console.log("Choices toggle")
     e.stopPropagation()
+    if (disabled) return
     dChoicesRef.current = !dChoicesRef.current
   }
 
@@ -98,15 +103,23 @@ const InputTextFieldBuild = ({
     if (choices.length) choicesRef.current = filterChoices(value, choices)
   }
 
+  const handleRemoveVal = (value, e) => {
+    console.log("Remove value")
+    e.stopPropagation()
+    if (disabled) return
+    if (rmVal) rmVal(value)
+  }
+
   const handleMouseOver = () => {
     console.log("Mouse over")
+    if (disabled) return
     if (onFinish) onFinish(inputVal.trim())
   }
 
   return (
     <div className='input' onClick={handleClick}>
       <div className={`input-root${icon ? " icon" : ""}${btnClass}`}>
-        <InputFieldValues values={vals} removeVal={rmVal} />
+        <InputFieldValues values={vals} removeVal={handleRemoveVal} />
         <input
           tabIndex='0'
           type='text'
@@ -123,6 +136,7 @@ const InputTextFieldBuild = ({
         <InputFieldButtons
           canReset={Boolean(inputVal)}
           reset={handleReset}
+          handleRemoveVal
           canMulti={Boolean(choices.length)}
           multiToggled={dChoicesRef.current}
           multiToggle={handleChoicesToggle}
