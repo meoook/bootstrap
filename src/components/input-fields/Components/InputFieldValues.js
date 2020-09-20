@@ -1,5 +1,5 @@
 import React from "react"
-import { IcoGet } from "../icons"
+import { IcoGet } from "../../icons"
 
 const InputFieldValues = ({ values, removeVal }) => {
   if (!Boolean(values)) return null

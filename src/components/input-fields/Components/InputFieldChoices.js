@@ -1,7 +1,8 @@
 import React from "react"
-import { IcoGet } from "../icons"
+import { IcoGet } from "../../icons"
 
-const InputFieldChoices = ({ choices, select, loading = false }) => {
+const InputFieldChoices = ({ dispay, choices, select, loading }) => {
+  if (!dispay) return null
   return (
     <div className='input-choices'>
       {loading ? (
@@ -9,7 +10,7 @@ const InputFieldChoices = ({ choices, select, loading = false }) => {
       ) : !choices.length ? (
         <div>Нет доступных вариантов</div>
       ) : (
-        choices.map((item) => <ChoiceItem key={item.name} item={item} select={select} />)
+        choices.map((item) => <ChoiceItem key={item.name} item={item} select={select.bind(this, item.name)} />)
       )}
     </div>
   )
