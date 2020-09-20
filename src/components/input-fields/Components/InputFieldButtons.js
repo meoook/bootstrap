@@ -1,8 +1,11 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { IcoGet } from "../../icons"
 import Loader from "../../static/Loader"
 
 const InputFieldButtons = ({ canReset, reset, canMulti, multiToggle, multiToggled, helpText, loading, disabled }) => {
+  useEffect(() => {
+    console.log("RENDER: Buttons")
+  })
   if (!canReset && !multiToggle && !helpText && !loading) return null
   return (
     <div className='input-btns'>
@@ -18,7 +21,7 @@ const ResetToggle = ({ avalible, reset }) => {
   if (!avalible || !reset) return null
   return (
     <button tabIndex='-1' className='input-btns-x btn btn-ico' onClick={reset}>
-      <svg viewBox='0 0 24 24'></svg>
+      <IcoGet name='close' />
     </button>
   )
 }

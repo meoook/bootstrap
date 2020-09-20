@@ -1,7 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { IcoGet } from "../../icons"
 
 const InputFieldChoices = ({ dispay, choices, select, loading }) => {
+  useEffect(() => {
+    console.log("RENDER: Choices")
+  })
   if (!dispay) return null
   return (
     <div className='input-choices'>

@@ -77,6 +77,7 @@
   white-space: nowrap;
   cursor: pointer;
   transition: all $timer;
+  transform: perspective(100px) translateZ(0px);
   &:hover {
     transform: perspective(100px) translateZ(2px);
   }
@@ -84,9 +85,8 @@
     transform: perspective(100px) translateZ(-1px);
   }
   svg {
-    // fill: $texth;
-    width: 1.2em;
     height: 1.2em;
+    width: 1.2em;
     &:first-child {
       margin-right: $padding / 2;
     }
@@ -173,7 +173,6 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  transition: all $timer;
   &.big {
     font-size: $font-s + $indent;
   }
@@ -185,7 +184,7 @@
     height: 1em;
     width: 1em;
     border-radius: $indent;
-    transition: all $timer;
+    transition: background-color $timer;
     box-sizing: content-box;
   }
   &-mark {
@@ -200,19 +199,16 @@
     margin: 0 $padding;
     pointer-events: none;
     font-weight: 500;
+    transition: color $timer;
+  }
+  svg {
+    height: 1em;
+    width: 1em;
   }
   &-check {
-    .switch-btn {
-      border-radius: $indent;
-    }
     .switch-mark {
       margin: 0px;
       line-height: normal;
-    }
-    svg {
-      height: 1em;
-      width: 1em;
-      fill: $texth;
     }
   }
   &-radio {
@@ -255,11 +251,9 @@
     }
   }
   &.active {
+    color: $texth;
     .switch-btn {
       background: $brand;
-    }
-    label {
-      color: $texth;
     }
     &:hover {
       border-color: rgba($texth, 0.1);

@@ -1,22 +1,13 @@
-import React, { useState } from "react"
-import InputFieldRoot from "../components/input-fields/InputFieldRoot"
+import React from "react"
+import InputText from "../components/input-fields/InputText"
 
 const DisplayInputs = () => {
-  const [val, setVal] = useState("")
-
   return (
     <section id='inputs'>
       <div className='row around'>
-        <InputFieldRoot val={val} setVal={setVal} outColor='warning' />
+        <InputText />
       </div>
       <hr />
-      <div className='row around'>
-        <InputFieldRoot val={val} setVal={setVal} outColor='success' label='Название' />
-      </div>
-      <hr />
-      <div className='row around'>
-        <InputFieldRoot val={val} setVal={setVal} outColor='success' icon='summary' label='Название' />
-      </div>
     </section>
   )
 }
