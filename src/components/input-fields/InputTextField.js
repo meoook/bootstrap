@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
-import InputFieldButtons from './InputFieldButtons'
-import InputFieldIcon from './InputFieldIcon'
-import InputFieldOutline from './InputFieldOutline'
-import InputFieldValues from './InputFieldValues'
-import InputFieldChoices from './InputFieldChoices'
-import InputFieldError from './InputFieldError'
+import InputFieldButtons from './Components/InputFieldButtons'
+import InputFieldIcon from './Components/InputFieldIcon'
+import InputFieldOutline from './Components/InputFieldOutline'
+import InputFieldValues from './Components/InputFieldValues'
+import InputFieldChoices from './Components/InputFieldChoices'
+import InputFieldError from './Components/InputFieldError'
 
 // Util
 const filterChoices = (value, choices) =>
   choices.filter((item) => item.toLowerCase().includes(value.toLowerCase()))
 
-const InputTextFieldBuild = ({
+const InputTextField = ({
   val = '', // Value setted by program
   chVal = null, // Handle change value
   vals = [], // Display multi values
-  rmVal = null, // Callback: To remove value from values list
+  rmVal = null, // Callback: To remove value from values list (if set - multi value)
   label = '', // label with outline or placeholder
   ph = 'Введите значение', // Placeholder (displayed only with choices or with icon field)
   icon = '', // icon name before text
@@ -48,10 +48,6 @@ const InputTextFieldBuild = ({
 
   // Listners
   useEffect(() => {
-    console.log('RENDER: Builder')
-  })
-  useEffect(() => {
-    console.log('Value changed:', val)
     setInputVal(val)
   }, [val])
   // useEffect(() => {
@@ -86,19 +82,16 @@ const InputTextFieldBuild = ({
     if (disabled) return
     const value = e.target.value
     setInputVal(value)
-    // console.log('Changing input', value)
     if (chVal) chVal(value)
     if (choices.length) choicesRef.current = filterChoices(value, choices)
   }
 
   const handleKeyPress = (e) => {
-    // console.log("Key press", e.target.value)
     if (disabled) return
     if (onFinish && e.key === 'Enter') onFinish(inputVal)
   }
 
   const handleReset = (e) => {
-    console.log('Reset')
     // e.stopPropagation()
     if (disabled) return
     if (onFinish) onFinish('')
@@ -107,7 +100,7 @@ const InputTextFieldBuild = ({
   }
 
   const handleChoicesToggle = (e) => {
-    console.log('Choices toggle')
+    console.log('Choice toggle', dChoicesRef.current)
     e.stopPropagation()
     if (disabled) return
     dChoicesRef.current = !dChoicesRef.current
@@ -129,13 +122,12 @@ const InputTextFieldBuild = ({
   }
 
   const handleMouseOver = () => {
-    console.log('Mouse over:', inputVal)
     if (disabled) return
     if (onFinish) onFinish(inputVal)
   }
 
   return (
-    <div className='input' onClick={handleClick}>
+    <div className='input' onClick={handleClick} disabled={disabled}>
       <div className={`input-root${icon ? ' icon' : ''}${btnClass}`}>
         <InputFieldValues values={vals} removeVal={handleRemoveVal} />
         <input
@@ -156,9 +148,9 @@ const InputTextFieldBuild = ({
           canReset={Boolean(inputVal)}
           reset={handleReset}
           handleRemoveVal
-          canMulti={Boolean(choices.length)}
-          multiToggled={dChoicesRef.current}
-          multiToggle={handleChoicesToggle}
+          hasChoices={Boolean(choices.length)}
+          choicesToggled={dChoicesRef.current}
+          choicesToggle={handleChoicesToggle}
           helpText={helpText}
           loading={loading}
           disabled={disabled}
@@ -177,4 +169,4 @@ const InputTextFieldBuild = ({
   )
 }
 
-export default InputTextFieldBuild
+export default InputTextField

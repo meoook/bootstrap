@@ -21,8 +21,7 @@
 
 .loader {
   position: relative;
-  color: $texth;
-  margin: 5% auto;
+  margin: 0 auto;
   display: inline-flex;
   &,
   &::before,
@@ -34,20 +33,6 @@
   &::before,
   &::after {
     @extend %absolute;
-  }
-  &-spinner {
-    &,
-    &::before,
-    &::after {
-      border: 0.3em solid transparent;
-      border-top: 0.3em solid $texth;
-    }
-    &::before {
-      animation: loading-spin 2s infinite linear;
-    }
-    &::after {
-      animation: loading-spin 2s infinite ease-in-out 0.25s;
-    }
   }
   &-shadow {
     &,
@@ -82,10 +67,12 @@
       left: 1.2em;
     }
   }
-  &-svg {
-    // animation: 4s svg-a infinite linear, 3s svg-o infinite linear;
-    animation: 4s svg-a infinite linear, 3s svg-o infinite linear;
-    // animation: 8s svg-a infinite linear, 6s svg-o infinite linear;
+  &-spinner {
+    animation: 4s spin-svg-a infinite linear, 3s spin-svg-o infinite linear;
+    svg {
+      width: 1.2em;
+      height: 1.2em;
+    }
   }
 }
 

@@ -2,24 +2,18 @@ import React from 'react'
 import { IcoGet } from '../icons'
 
 const Loader = ({ name, size }) => {
-  const loaderClass = () => {
+  const _loaderClass = () => {
     switch (name) {
       case 'dots':
-        return 'loader loader-dots'
+        return { className: 'loader loader-dots' }
       case 'shadow':
-        return 'loader loader-shadow'
+        return { className: 'loader loader-shadow' }
       default:
-        return 'loader loader-spinner'
+        return { className: 'loader loader-spinner' }
     }
   }
-  if (name === 'svg')
-    return (
-      <div className='loader loader-svg'>
-        <IcoGet name='loader' />
-      </div>
-    )
 
-  const styleSize = () => {
+  const _styleSize = () => {
     switch (size) {
       case 1:
         return { style: { fontSize: '20px' } }
@@ -32,7 +26,14 @@ const Loader = ({ name, size }) => {
     }
   }
 
-  return <div className={loaderClass()} {...styleSize()}></div>
+  if (['dots', 'shadow'].includes(name))
+    return <div {..._loaderClass()} {..._styleSize()}></div>
+
+  return (
+    <div {..._loaderClass()} {..._styleSize()}>
+      <IcoGet name='loader' />
+    </div>
+  )
 }
 
 export default Loader

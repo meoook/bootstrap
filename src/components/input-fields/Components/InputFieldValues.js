@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { IcoGet } from '../../icons'
 
 const InputFieldValues = ({ values, removeVal }) => {
-  useEffect(() => {
-    // console.log("RENDER: Values")
-  })
   if (!Boolean(values)) return null
   return (
     <>

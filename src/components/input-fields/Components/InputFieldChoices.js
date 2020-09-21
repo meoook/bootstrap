@@ -1,9 +1,9 @@
-import React, { useEffect } from "react"
-import { IcoGet } from "../../icons"
+import React, { useEffect } from 'react'
+import { IcoGet } from '../../icons'
 
 const InputFieldChoices = ({ dispay, choices, select, loading }) => {
   useEffect(() => {
-    // console.log("RENDER: Choices")
+    console.log('Choices rendered')
   })
   if (!dispay) return null
   return (
@@ -13,7 +13,13 @@ const InputFieldChoices = ({ dispay, choices, select, loading }) => {
       ) : !choices.length ? (
         <div>Нет доступных вариантов</div>
       ) : (
-        choices.map((item) => <ChoiceItem key={item.name} item={item} select={select.bind(this, item.name)} />)
+        choices.map((item) => (
+          <ChoiceItem
+            key={item.name}
+            item={item}
+            select={select.bind(this, item.name)}
+          />
+        ))
       )}
     </div>
   )
@@ -23,7 +29,7 @@ export default InputFieldChoices
 
 const ChoiceItem = ({ item, select }) => {
   const itemProps = (item) => {
-    if (item.active) return { className: "active" }
+    if (item.active) return { className: 'active' }
     if (item.disabled) return { disabled: true }
     const onClick = () => select(item.name)
     return { onClick }

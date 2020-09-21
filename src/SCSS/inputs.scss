@@ -14,8 +14,8 @@
     z-index: 1;
     transform: translate($padding * 1.2, 10px) scale(1);
     transform-origin: top left;
-    transition: color $timer/2 cubic-bezier(0, 0, 0.2, 1) 0ms,
-      transform $timer/2 cubic-bezier(0, 0, 0.2, 1) 0ms;
+    transition: color $timer/3 cubic-bezier(0, 0, 0.2, 1) 0ms,
+      transform $timer/3 cubic-bezier(0, 0, 0.2, 1) 0ms;
     pointer-events: none;
     color: $text;
     &.success {
@@ -27,22 +27,26 @@
     &.error {
       color: $error !important;
     }
-    &.disabled {
-      color: $textd !important;
-    }
   }
   & input {
     flex-grow: 1;
     min-width: 30px;
     padding: $padding/2;
-    &:focus ~,
-    &:valid ~ {
+    &:focus ~ {
       label {
-        transform: translate(14px, -6px) scale(0.75);
         color: $brand;
       }
       fieldset {
         border-color: $brand;
+      }
+    }
+    &:focus ~,
+    &:valid ~,
+    &:disabled ~ {
+      label {
+        transform: translate(14px, -6px) scale(0.75);
+      }
+      fieldset {
         border-width: 2px;
         legend {
           max-width: 1000px;
@@ -81,9 +85,6 @@
     }
     &.error {
       border-color: $error !important;
-    }
-    &.disabled {
-      border-color: $textd !important;
     }
   }
   & svg {
@@ -128,7 +129,7 @@
   &-btns {
     right: $padding / 2;
     & > * {
-      transition: opacity $timer;
+      transition: opacity $timer/2;
     }
     &-x {
       opacity: 0;
@@ -216,8 +217,24 @@
     .input-root {
       background: $active;
     }
-    fieldset {
-      border-color: $texth;
+    // label {
+    //   color: $texth;
+    // }
+    // fieldset {
+    //   border-color: $texth;
+    // }
+  }
+  &[disabled] {
+    color: $textd !important;
+    cursor: initial;
+    & label {
+      color: $textd !important;
+    }
+    & fieldset {
+      border-color: $textd !important;
+    }
+    & .input-root {
+      background-color: $menu !important;
     }
   }
 }

@@ -7,6 +7,7 @@ import DisplayButtons from './display/DisplayButtons'
 import DisplayGroup from './display/DisplayGroup'
 import DisplaySwitch from './display/DisplaySwitch'
 import DisplayInputs from './display/DisplayInputs'
+import DisplayInputsChoices from './display/DisplayInputsChoices'
 // import { In } from './input-fields/InputField'
 
 function App() {
@@ -19,7 +20,10 @@ function App() {
       <DisplayGroup />
       <DisplaySwitch />
       <DisplayInputs />
+      <DisplayInputsChoices />
+
       {/* <DisplayPictures /> */}
+      {/* Cards, popup, buttons menu (small) */}
     </div>
   )
 }

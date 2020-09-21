@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const InputFieldOutline = ({ label, color }) => {
-  useEffect(() => {
-    // console.log("RENDER: Outline")
-  })
   if (!color) return null
   const _className = () => {
     switch (color) {
@@ -13,8 +10,6 @@ const InputFieldOutline = ({ label, color }) => {
         return { className: 'warning' }
       case 'success':
         return { className: 'success' }
-      case 'disabled':
-        return { className: 'disabled' }
       default:
         return
     }

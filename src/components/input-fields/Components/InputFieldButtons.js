@@ -1,32 +1,35 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { IcoGet } from '../../icons'
 import Loader from '../../static/Loader'
 
 const InputFieldButtons = ({
   canReset,
   reset,
-  canMulti,
-  multiToggle,
-  multiToggled,
+  hasChoices,
+  choicesToggle,
+  choicesToggled,
   helpText,
   loading,
   disabled,
 }) => {
-  useEffect(() => {
-    // console.log("RENDER: Buttons")
-  })
-  if (!canReset && !multiToggle && !helpText && !loading) return null
+  if (!canReset && !choicesToggle && !helpText && !loading) return null
+  if (disabled) {
+    if (!loading) return null
+    return (
+      <div className='input-btns'>
+        <Loader name='svg' />
+      </div>
+    )
+  }
   return (
     <div className='input-btns'>
       {loading ? (
-        <div>
-          <Loader name='svg' />
-        </div>
+        <Loader name='svg' />
       ) : (
         <ResetToggle avalible={canReset} reset={reset} />
       )}
-      {canMulti ? (
-        <MultiToggle toggle={multiToggle} toggled={multiToggled} />
+      {hasChoices ? (
+        <MultiToggle toggle={choicesToggle} toggled={choicesToggled} />
       ) : (
         <HelpIcon text={helpText} />
       )}

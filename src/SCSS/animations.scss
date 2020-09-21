@@ -54,7 +54,7 @@
   }
 }
 // Loaders
-@keyframes svg-a {
+@keyframes spin-svg-a {
   from {
     stroke-dasharray: 100 0;
   }
@@ -65,7 +65,7 @@
     stroke-dasharray: 100 0;
   }
 }
-@keyframes svg-o {
+@keyframes spin-svg-o {
   from {
     stroke-dashoffset: 50;
   }
