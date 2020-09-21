@@ -56,7 +56,13 @@
   flex: 1 0;
 }
 @include grid-generator(12);
-
+.btn,
+.input {
+  svg {
+    height: 1.2em;
+    width: 1.2em;
+  }
+}
 .btn {
   @extend %shadow-light;
   @extend %shadow-light-text;
@@ -85,8 +91,6 @@
     transform: perspective(100px) translateZ(-1px);
   }
   svg {
-    height: 1.2em;
-    width: 1.2em;
     &:first-child {
       margin-right: $padding / 2;
     }
@@ -102,7 +106,7 @@
   &.small {
     font-size: $font-s - $indent / 2;
     min-width: 80px;
-    padding: 0 $padding / 2;
+    padding: $padding/4 $padding / 2;
   }
   &-nop {
     min-width: 1.5em !important;

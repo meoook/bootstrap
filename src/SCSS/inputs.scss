@@ -1,5 +1,4 @@
 .input {
-  background: black;
   position: relative;
   display: inline-table;
   margin: $padding / 2;
@@ -13,16 +12,29 @@
     top: 0;
     left: 0;
     z-index: 1;
-    transform: translate($padding * 1.5, 12px) scale(1);
+    transform: translate($padding * 1.2, 10px) scale(1);
     transform-origin: top left;
-    transition: color $timer/2 cubic-bezier(0, 0, 0.2, 1) 0ms, transform $timer/2 cubic-bezier(0, 0, 0.2, 1) 0ms;
+    transition: color $timer/2 cubic-bezier(0, 0, 0.2, 1) 0ms,
+      transform $timer/2 cubic-bezier(0, 0, 0.2, 1) 0ms;
     pointer-events: none;
+    color: $text;
+    &.success {
+      color: $success !important;
+    }
+    &.warning {
+      color: $warning !important;
+    }
+    &.error {
+      color: $error !important;
+    }
+    &.disabled {
+      color: $textd !important;
+    }
   }
   & input {
-    background: darkgreen;
     flex-grow: 1;
     min-width: 30px;
-    padding: $padding / 2;
+    padding: $padding/2;
     &:focus ~,
     &:valid ~ {
       label {
@@ -42,31 +54,43 @@
   & fieldset {
     @extend %absolute;
     top: -5px;
-    padding: 0 8px;
+    padding: 0 $padding / 2 + 2px;
     overflow: hidden;
-    border-style: solid;
-    border-width: 1px;
+    border: 1px solid $text;
     border-radius: inherit;
-    pointer-events: none;
     & legend {
+      display: block;
+      visibility: hidden;
+      font-size: $font-s - $indent;
       width: auto;
       height: 11px;
-      display: block;
-      padding: 0;
-      font-size: 0.75em;
       max-width: 0.01px;
-      text-align: left;
       transition: max-width $timer/6 cubic-bezier(0, 0, 0.2, 1) 0ms;
-      visibility: hidden;
       & > span {
         display: inline-block;
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: $padding / 2;
+        padding-right: $padding / 2;
         pointer-events: none;
       }
     }
+    &.success {
+      border-color: $success !important;
+    }
+    &.warning {
+      border-color: $warning !important;
+    }
+    &.error {
+      border-color: $error !important;
+    }
+    &.disabled {
+      border-color: $textd !important;
+    }
+  }
+  & svg {
+    font-size: 1.2rem;
   }
   &-root {
+    background: $input;
     position: relative;
     min-width: 100%;
     display: inline-flex;
@@ -74,7 +98,6 @@
     padding: $padding / 2;
     cursor: text;
     border-radius: $radius;
-    // vertical-align: top;
     &.icon {
       padding-left: 32px + $padding/ 2;
     }
@@ -85,24 +108,25 @@
       padding-right: 32px * 2 + $padding/ 2;
     }
   }
-  &-icon {
-    position: absolute;
-    top: calc(50% - 16px);
-    left: $padding / 2;
-    background: red;
-    width: 2em !important;
-    height: 2em !important;
-    padding: 2px !important;
+  &-icon,
+  &-btns,
+  &-btns > * {
+    min-width: 2em;
+    height: 2em;
     display: inline-flex;
     justify-content: space-around;
     align-items: center;
   }
+  &-icon,
   &-btns {
     position: absolute;
     top: calc(50% - 16px);
+  }
+  &-icon {
+    left: $padding / 2;
+  }
+  &-btns {
     right: $padding / 2;
-    display: flex;
-    background: red;
     & > * {
       transition: opacity $timer;
     }
@@ -112,13 +136,35 @@
     &-m rotate {
       transform: rotate(180deg);
     }
-    svg {
-      margin: 0 !important;
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      font-size: 1.5rem;
-      user-select: none;
+    &-h {
+      position: relative;
+      cursor: pointer;
+      &-text {
+        @extend %shadow;
+        position: absolute;
+        z-index: 1;
+        top: calc(100% + #{$padding / 3});
+        right: 0;
+        visibility: hidden;
+        border: $bd solid $texth;
+        border-radius: $radius;
+        background: $brand;
+        padding: $padding / 2 $padding;
+        pointer-events: none;
+        &::before {
+          content: ' ';
+          position: absolute;
+          bottom: 100%;
+          right: $indent * 2;
+          margin-left: -$indent * 1.7;
+          border: $indent * 1.7 solid transparent;
+          border-bottom-color: $texth;
+        }
+      }
+      &:hover &-text {
+        visibility: visible;
+        animation: fadeIn $timer ease;
+      }
     }
   }
   &-choices {
@@ -138,7 +184,7 @@
       min-height: auto;
       padding: 6px 16px;
       font-size: 1rem;
-      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
       font-weight: 400;
       line-height: 1.5;
       cursor: pointer;
@@ -150,11 +196,25 @@
       }
     }
   }
+  &-error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    font-size: $font-s - $indent;
+    line-height: normal;
+    color: $error;
+    padding: 0 $padding;
+    overflow: hidden;
+  }
   &:hover {
     .input-btns {
       &-x {
         opacity: 1;
       }
+    }
+    .input-root {
+      background: $active;
     }
     fieldset {
       border-color: $texth;

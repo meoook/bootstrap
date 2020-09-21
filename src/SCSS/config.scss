@@ -43,7 +43,7 @@ $info: #48c7d5;
   right: 0;
   top: 0;
   left: 0;
-  content: "";
+  content: '';
 }
 
 %bd {
@@ -51,6 +51,9 @@ $info: #48c7d5;
   border-radius: $radius;
 }
 
+%shadow {
+  box-shadow: 2px 4px 6px $shadow;
+}
 %shadow-light {
   box-shadow: 2px 4px 6px rgba($shadow, 0.2);
 }

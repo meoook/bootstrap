@@ -3,7 +3,7 @@ import { IcoGet } from "../../icons"
 
 const InputFieldChoices = ({ dispay, choices, select, loading }) => {
   useEffect(() => {
-    console.log("RENDER: Choices")
+    // console.log("RENDER: Choices")
   })
   if (!dispay) return null
   return (

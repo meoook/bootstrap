@@ -7,6 +7,7 @@ const DisplayIcons = (props) => {
     'warning',
     'error',
     'info',
+    'tultip',
     'addcircle',
     'arrows',
     'settings',

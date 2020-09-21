@@ -1,4 +1,5 @@
 import React from 'react'
+import { IcoGet } from '../icons'
 
 const Loader = ({ name, size }) => {
   const loaderClass = () => {
@@ -11,21 +12,27 @@ const Loader = ({ name, size }) => {
         return 'loader loader-spinner'
     }
   }
+  if (name === 'svg')
+    return (
+      <div className='loader loader-svg'>
+        <IcoGet name='loader' />
+      </div>
+    )
 
   const styleSize = () => {
     switch (size) {
       case 1:
-        return { fontSize: '20px' }
+        return { style: { fontSize: '20px' } }
       case 2:
-        return { fontSize: '30px' }
+        return { style: { fontSize: '30px' } }
       case 3:
-        return { fontSize: '40px' }
+        return { style: { fontSize: '40px' } }
       default:
-        return { fontSize: 'inherit' }
+        return
     }
   }
 
-  return <div className={loaderClass()} style={styleSize()}></div>
+  return <div className={loaderClass()} {...styleSize()}></div>
 }
 
 export default Loader

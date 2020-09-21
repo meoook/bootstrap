@@ -1,9 +1,9 @@
-import React, { useEffect } from "react"
-import { IcoGet } from "../../icons"
+import React, { useEffect } from 'react'
+import { IcoGet } from '../../icons'
 
 const InputFieldValues = ({ values, removeVal }) => {
   useEffect(() => {
-    console.log("RENDER: Values")
+    // console.log("RENDER: Values")
   })
   if (!Boolean(values)) return null
   return (
