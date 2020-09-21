@@ -21,7 +21,7 @@ const DisplayInputs = () => {
   return (
     <section id='inputs'>
       <div className='row around'>
-        <InputTextField val={val} chVal={change} onFinish={finish} />
+        <InputTextField val={val} chInp={change} onFinish={finish} />
         <InputTextField val={val} onFinish={finish} ph='Place holder' />
       </div>
       <div className='row around'>

@@ -7,12 +7,19 @@ const DisplayInputsChoices = () => {
     'random',
     'whatucan',
     'asdassure',
+    'asdassure',
+    'asdassure',
+    'asdassure',
     'tofindasd',
     'onemoreasd',
+    'target',
+    'target',
     'target',
     'value',
     'manynames',
     'lookuphere',
+    'zdoneremny',
+    'zdoneremny',
     'zdoneremny',
     'inpursiko',
     'elemtax',
@@ -24,39 +31,44 @@ const DisplayInputsChoices = () => {
   //   { name: 'Nameone', icon: 'search', disabled: false },
   // ]
   const [val, setVal] = useState('')
-  const [val1, setVal1] = useState('')
+  // const [val1, setVal1] = useState('')
 
-  const change = (value) => {
-    // You can update choices here
-    console.log('Root changing ref:', value)
-  }
+  // const change = (value) => {
+  //   // You can update choices here
+  //   console.log('Root changing ref:', value)
+  // }
   const finish = (value) => {
-    console.log('Root finish:', value)
-    setVal(value)
+    console.log('Root finish:', value, 'old', val)
+    if (value === '' || options.includes(value)) {
+      console.log('Root changing val')
+      setVal(value)
+    } else setVal()
   }
-  const finish1 = (value) => {
-    setVal1(value)
-  }
+  // const finish1 = (value) => {
+  //   setVal1(value)
+  // }
 
   return (
-    <section id='inputs'>
+    <section className='inputs'>
       <div className='row around'>
         <InputTextField
           val={val}
-          chVal={change}
+          // chInp={change}
           onFinish={finish}
+          icon='search'
+          outColor='default'
           ph='Place holder'
           helpText='Field help information'
           choices={options}
         />
-        <InputTextField
+        {/* <InputTextField
           val={val}
           onFinish={finish}
           ph='Place holder'
           icon='search'
-        />
+        /> */}
       </div>
-      <div className='row around'>
+      {/* <div className='row around'>
         <InputTextField
           val={val1}
           onFinish={finish1}
@@ -77,8 +89,8 @@ const DisplayInputsChoices = () => {
           helpText='Field help information'
           errorText='This is error text'
         />
-      </div>
-      <div className='row around'>
+      </div> */}
+      {/* <div className='row around'>
         <InputTextField
           val={val1}
           onFinish={finish1}
@@ -99,7 +111,7 @@ const DisplayInputsChoices = () => {
           helpText='Field help information'
           disabled={true}
         />
-      </div>
+      </div> */}
     </section>
   )
 }

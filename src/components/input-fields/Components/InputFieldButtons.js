@@ -49,7 +49,7 @@ const ResetToggle = ({ avalible, reset }) => {
 }
 
 const MultiToggle = ({ toggle, toggled }) => {
-  const className = `input-btns-m btn btn-ico ${toggled ? ' rotate' : ''}`
+  const className = `input-btns-m btn btn-ico${toggled ? ' rotate' : ''}`
   return (
     <button tabIndex='-1' className={className} onClick={toggle}>
       <IcoGet name='arrdown' />

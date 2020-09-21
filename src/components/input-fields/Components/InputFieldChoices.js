@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react'
 import { IcoGet } from '../../icons'
 
-const InputFieldChoices = ({ dispay, choices, select, loading }) => {
+const InputFieldChoices = ({ dispay, choices, select, loading, close }) => {
   useEffect(() => {
-    console.log('Choices rendered')
-  })
+    window.addEventListener('click', close)
+    return () => {
+      window.removeEventListener('click', close)
+    }
+    // eslint-disable-next-line
+  }, [])
+
   if (!dispay) return null
   return (
     <div className='input-choices'>
@@ -14,11 +19,7 @@ const InputFieldChoices = ({ dispay, choices, select, loading }) => {
         <div>Нет доступных вариантов</div>
       ) : (
         choices.map((item) => (
-          <ChoiceItem
-            key={item.name}
-            item={item}
-            select={select.bind(this, item.name)}
-          />
+          <ChoiceItem key={item.name} item={item} select={select} />
         ))
       )}
     </div>
@@ -28,14 +29,17 @@ const InputFieldChoices = ({ dispay, choices, select, loading }) => {
 export default InputFieldChoices
 
 const ChoiceItem = ({ item, select }) => {
-  const itemProps = (item) => {
-    if (item.active) return { className: 'active' }
-    if (item.disabled) return { disabled: true }
-    const onClick = () => select(item.name)
+  const itemProps = (x) => {
+    if (x.active) return { className: 'active' }
+    if (x.disabled) return { disabled: true }
+    const onClick = (e) => {
+      // e.stopPropagation()
+      select(x.name, e)
+    }
     return { onClick }
   }
   return (
-    <div {...itemProps}>
+    <div {...itemProps(item)}>
       {Boolean(item.icon) && <IcoGet name={item.icon} />}
       {item.name}
     </div>

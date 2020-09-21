@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import InputFieldButtons from './Components/InputFieldButtons'
 import InputFieldIcon from './Components/InputFieldIcon'
 import InputFieldOutline from './Components/InputFieldOutline'
@@ -7,12 +7,45 @@ import InputFieldChoices from './Components/InputFieldChoices'
 import InputFieldError from './Components/InputFieldError'
 
 // Util
-const filterChoices = (value, choices) =>
-  choices.filter((item) => item.toLowerCase().includes(value.toLowerCase()))
+
+const choicesMapper = (value, choices, toActive = [], filterActive = false) => {
+  if (!choices || !choices.length) return []
+  // console.log('MAPPER', typeof choices[0], toActive)
+  const result = []
+  const uniqNames = new Map()
+  const uniqActive = new Map([...toActive.map((item) => [item, true])])
+
+  choices.forEach((choice) => {
+    const obj = typeof choice === 'object' ? choice : { name: choice }
+    if (!uniqNames.has(obj.name)) {
+      uniqNames.set(obj.name, true) // set any value to Map
+      const active = uniqActive.has(obj.name)
+      if (filterActive && active) return
+      result.push({
+        name: obj.name,
+        icon: 'icon' in obj ? obj.icon : null,
+        active: active,
+        disabled: 'disabled' in obj && obj.disabled,
+      })
+    }
+  })
+  return result
+    .filter((item) => item.name.toLowerCase().includes(value.toLowerCase()))
+    .sort((a, b) => {
+      const first = a.name.toUpperCase()
+      const second = b.name.toUpperCase()
+      if (first < second) {
+        return -1
+      } else if (first > second) {
+        return 1
+      }
+      return 0
+    })
+}
 
 const InputTextField = ({
   val = '', // Value setted by program
-  chVal = null, // Handle change value
+  chInp = null, // Callback: Handle change input (useRef on choices if choices updated by this callback)
   vals = [], // Display multi values
   rmVal = null, // Callback: To remove value from values list (if set - multi value)
   label = '', // label with outline or placeholder
@@ -22,15 +55,18 @@ const InputTextField = ({
   helpText = '', // help text onHover info Icon
   outColor = '', // if set - display outline border & label control
   onFinish = null, // Callback: reset or onBlur or keyEnter or select from choices
-  choices = [], // Choices for dropdown list, if not set - display "no variants"
+  isChoiser = false, // If no choices but need to display choice toggler
+  choices = [], // Choices for dropdown list, if not set - display "no variants" // TODO: Mb ref from root
+  choicesHide = true, // Hide choices after choice selected
+  choicesFilter = false, // To filter active val(s) from choices list
   loading = false, // State for field loading (choices and icon)
   disabled = false, // disable ui control
 }) => {
   // State
   const [inputVal, setInputVal] = useState('')
   const inRef = useRef()
+  const [choicesDspl, setChoicesDspl] = useState(false) // Toggler to display choices
   const choicesRef = useRef([]) // Must be an array of special items
-  const dChoicesRef = useRef(false) // Toggler to display choices
 
   // Const state
   const required = icon || vals.length ? false : true
@@ -44,90 +80,120 @@ const InputTextField = ({
       ? 'warning'
       : outColor
     : ''
-  const btnClass = helpText || choices.length ? ' btns-two' : ' btns-one'
+  const btnClass =
+    helpText || choices.length || isChoiser ? ' btns-two' : ' btns-one'
+
+  // utils
+  const checkFocus = () => {
+    if (inRef.current !== document.activeElement) {
+      inRef.current.focus()
+    }
+  }
 
   // Listners
+  const choicer = useCallback(
+    (value) => {
+      if (choices.length || isChoiser)
+        choicesRef.current = choicesMapper(
+          value,
+          choices,
+          [...vals, val],
+          choicesFilter
+        )
+    },
+    [val, vals, isChoiser, choices, choicesFilter]
+  )
+
   useEffect(() => {
+    choicer(val)
+  }, [choicer, val])
+  useEffect(() => {
+    console.log('Elem: Root val changed', val)
     setInputVal(val)
   }, [val])
-  // useEffect(() => {
-  //   console.log("Choices or value changed:", val, choices) // Mb useMemo
-  //   choicesRef.current = filterChoices(val, choices)
-  // }, [val, choices])
-
-  // Set window listner cos e.stopPropagation don't work with onBlur
-  // useEffect(() => {
-  //   window.addEventListener('click', handleMouseOver)
-  //   return () => {
-  //     window.removeEventListener('click', handleMouseOver)
-  //   }
-  //   // eslint-disable-next-line
-  // }, [])
 
   // Handlers
   const handleClick = (e) => {
-    console.log('Check focused')
     e.stopPropagation()
     if (disabled) return
-    if (inRef.current !== document.activeElement) {
-      console.log('Not focused - focusing')
-      inRef.current.focus()
-    } else if (choices.length) {
-      console.log('Focused witch choices - toggle')
-      dChoicesRef.current = !dChoicesRef.current
-    }
+    checkFocus()
+    if (choices.length) setChoicesDspl((prev) => !prev)
   }
 
   const handleChange = (e) => {
     if (disabled) return
     const value = e.target.value
     setInputVal(value)
-    if (chVal) chVal(value)
-    if (choices.length) choicesRef.current = filterChoices(value, choices)
+    if (chInp) chInp(value)
+    choicer(value)
+    if (choices.length || isChoiser) setChoicesDspl(true)
   }
 
   const handleKeyPress = (e) => {
     if (disabled) return
     if (onFinish && e.key === 'Enter') onFinish(inputVal)
+    if (choices.length || isChoiser) setChoicesDspl(false)
   }
 
   const handleReset = (e) => {
-    // e.stopPropagation()
+    e.stopPropagation()
     if (disabled) return
-    if (onFinish) onFinish('')
+    checkFocus()
+    if (!val) setInputVal('')
+    else if (onFinish) onFinish('')
     else setInputVal('')
-    if (choices.length) choicesRef.current = choices
+    choicer('')
   }
 
   const handleChoicesToggle = (e) => {
-    console.log('Choice toggle', dChoicesRef.current)
     e.stopPropagation()
     if (disabled) return
-    dChoicesRef.current = !dChoicesRef.current
+    checkFocus()
+    setChoicesDspl((prev) => !prev)
   }
 
   const handleChoiceClick = (value, e) => {
-    console.log('Choice selected')
+    console.log('CHOICE CLICKED', value)
     e.stopPropagation()
+    checkFocus()
     if (onFinish) onFinish(value)
     else setInputVal(value)
-    if (choices.length) choicesRef.current = filterChoices(value, choices)
+    if (choicesHide) setChoicesDspl(false)
+    choicer(value)
   }
 
   const handleRemoveVal = (value, e) => {
     console.log('Remove value')
     e.stopPropagation()
     if (disabled) return
+    checkFocus()
     if (rmVal) rmVal(value)
   }
 
-  const handleMouseOver = () => {
+  const handleLoseFocus = (e) => {
+    // e.preventDefault()
+    // e.stopPropagation()
+    console.log('LOSE FOCUSE', inputVal, !inputVal ? 'no val' : 'val here')
     if (disabled) return
-    if (onFinish) onFinish(inputVal)
+    if (onFinish) {
+      if (choices.length || isChoiser) {
+        setTimeout(() => {
+          if (!inputVal || choices.includes(inputVal)) onFinish(inputVal)
+          else if (val) setInputVal(val)
+          else setInputVal('')
+        }, 5)
+      } else onFinish(inputVal)
+    }
+  }
+
+  const handleMouseOut = (e) => {
+    console.log('MOUSE OVER')
+    if (disabled) return
+    setChoicesDspl(false)
   }
 
   return (
-    <div className='input' onClick={handleClick} disabled={disabled}>
+    <div className='input' disabled={disabled} onClick={handleClick}>
       <div className={`input-root${icon ? ' icon' : ''}${btnClass}`}>
         <InputFieldValues values={vals} removeVal={handleRemoveVal} />
         <input
@@ -136,7 +202,7 @@ const InputTextField = ({
           autoComplete='off'
           ref={inRef}
           value={inputVal}
-          onBlur={handleMouseOver}
+          onBlur={handleLoseFocus}
           onChange={handleChange}
           onKeyPress={handleKeyPress}
           placeholder={placeholder}
@@ -149,7 +215,7 @@ const InputTextField = ({
           reset={handleReset}
           handleRemoveVal
           hasChoices={Boolean(choices.length)}
-          choicesToggled={dChoicesRef.current}
+          choicesToggled={choicesDspl}
           choicesToggle={handleChoicesToggle}
           helpText={helpText}
           loading={loading}
@@ -157,10 +223,13 @@ const InputTextField = ({
         />
         <InputFieldOutline label={label} color={outlineColor} />
       </div>
-      {<InputFieldError text={errorText} /> || (
+      {errorText ? (
+        <InputFieldError text={errorText} />
+      ) : (
         <InputFieldChoices
-          dispay={dChoicesRef.current}
+          dispay={choicesDspl}
           choices={choicesRef.current}
+          close={handleMouseOut}
           select={handleChoiceClick}
           loading={loading}
         />

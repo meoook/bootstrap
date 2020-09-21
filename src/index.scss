@@ -1,9 +1,9 @@
-@import "./SCSS/config.scss";
-@import "./SCSS/animations.scss";
-@import "./SCSS/tags.scss";
-@import "./SCSS/bootstrap.scss";
-@import "./SCSS/inputs.scss";
-@import "./SCSS/loaders.scss";
+@import './SCSS/config.scss';
+@import './SCSS/animations.scss';
+@import './SCSS/tags.scss';
+@import './SCSS/bootstrap.scss';
+@import './SCSS/inputs.scss';
+@import './SCSS/loaders.scss';
 
 .container {
   width: 95wh;
@@ -25,5 +25,10 @@
 #inputs {
   & > .row {
     height: 105px;
+  }
+}
+section.inputs {
+  & > .row {
+    height: 75vh;
   }
 }
