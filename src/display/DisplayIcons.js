@@ -24,7 +24,27 @@ const DisplayIcons = (props) => {
     'check',
     'arrdown',
     'close',
-  ]
+    'subject',
+    'login',
+    'logout',
+    'menu',
+    'user',
+    'document',
+    'sorting',
+    'statistic',
+    'refnet',
+    'settingsmob',
+    'more',
+  ].sort((a, b) => {
+    const first = a.toUpperCase()
+    const second = b.toUpperCase()
+    if (first < second) {
+      return -1
+    } else if (first > second) {
+      return 1
+    }
+    return 0
+  })
   const icoLang = [
     'no lang',
     'german',
@@ -34,7 +54,7 @@ const DisplayIcons = (props) => {
     'chinese',
   ]
   return (
-    <section>
+    <section className='svg'>
       <div className='row long'>
         {icoArr.map((item) => (
           <div key={item} className='col-2 column center'>

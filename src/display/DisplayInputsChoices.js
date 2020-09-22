@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import InputTextField from '../components/input-fields/InputTextField'
+import InputChoicesField from '../components/input-fields/InputChoicesField'
 
 const DisplayInputsChoices = () => {
   const options = [
@@ -40,7 +40,6 @@ const DisplayInputsChoices = () => {
   const finish = (value) => {
     console.log('Root finish:', value, 'old', val)
     if (value === '' || options.includes(value)) {
-      console.log('Root changing val')
       setVal(value)
     } else setVal()
   }
@@ -51,7 +50,7 @@ const DisplayInputsChoices = () => {
   return (
     <section className='inputs'>
       <div className='row around'>
-        <InputTextField
+        <InputChoicesField
           val={val}
           // chInp={change}
           onFinish={finish}

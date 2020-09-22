@@ -27,8 +27,16 @@
     height: 105px;
   }
 }
-section.inputs {
-  & > .row {
-    height: 75vh;
+section {
+  &.svg {
+    color: red;
+    svg {
+      border: 1px solid white;
+    }
+  }
+  &.inputs {
+    & > .row {
+      height: 75vh;
+    }
   }
 }
