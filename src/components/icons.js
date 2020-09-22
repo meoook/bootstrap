@@ -14,6 +14,7 @@ import { ReactComponent as SvgFolder } from '../IMG/ico/folder.svg'
 import { ReactComponent as SvgFolderOut } from '../IMG/ico/folder_out.svg'
 import { ReactComponent as SvgLanguage } from '../IMG/ico/language.svg'
 import { ReactComponent as SvgLoader } from '../IMG/ico/loader.svg'
+import { ReactComponent as SvgLoaderBrand } from '../IMG/ico/loader-brand.svg'
 import { ReactComponent as SvgLogin } from '../IMG/ico/login.svg'
 import { ReactComponent as SvgLogout } from '../IMG/ico/logout.svg'
 import { ReactComponent as SvgMenu } from '../IMG/ico/menu.svg'
@@ -36,6 +37,7 @@ import { ReactComponent as SvgWorkOut } from '../IMG/ico/work_out.svg'
 // Big
 import { ReactComponent as SvgAttantion } from '../IMG/attantion.svg'
 import { ReactComponent as SvgQuestion } from '../IMG/question.svg'
+import { ReactComponent as SvgLoaderI } from '../IMG/loader-i.svg'
 // Lang icons
 import { ReactComponent as SvgWorld } from '../IMG/lang/world.svg'
 import { ReactComponent as SvgRussian } from '../IMG/lang/russian.svg'
@@ -118,6 +120,10 @@ export const IcoGet = ({ name }) => {
       return <SvgAttantion />
     case 'question': // and place to DisplaySVG
       return <SvgQuestion />
+    case 'loaderi':
+      return <SvgLoaderI />
+    case 'loaderbrand':
+      return <SvgLoaderBrand />
     case 'addcircle':
       return <SvgAddCircle /> // and this
     default:

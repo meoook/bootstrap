@@ -73,3 +73,31 @@
     stroke-dashoffset: 250;
   }
 }
+
+@keyframes spin-svg-x {
+  0% {
+    stroke-dashoffset: 50;
+    stroke-dasharray: 20 40;
+  }
+  50% {
+    stroke-dasharray: 50 70;
+  }
+  100% {
+    stroke-dashoffset: 350;
+    stroke-dasharray: 20 40;
+  }
+}
+
+@keyframes spin-svg-z {
+  0% {
+    stroke-dashoffset: 75;
+    stroke-dasharray: 12 20;
+  }
+  50% {
+    stroke-dasharray: 5 10;
+  }
+  100% {
+    stroke-dashoffset: 360;
+    stroke-dasharray: 12 20;
+  }
+}

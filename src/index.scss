@@ -40,3 +40,19 @@ section {
     }
   }
 }
+.xxx svg {
+  border: 0 !important;
+  height: 5em;
+  width: 5em;
+  fill: none;
+  animation: spin-svg-z $timer * 15 infinite linear,
+    spin $timer * 5 infinite linear;
+}
+.xxxx svg {
+  border: 0 !important;
+  height: 5em;
+  width: 5em;
+  fill: none;
+  animation: spin-svg-x $timer * 12 infinite ease-out;
+  // spin $timer * 3 infinite linear;
+}

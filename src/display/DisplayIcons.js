@@ -78,17 +78,29 @@ const DisplayIcons = (props) => {
       </div>
       <hr />
       <div className='row'>
-        <div className='col-3 column center'>
+        <div className='col-2 column center'>
           <div>
             <IcoGet name='attantion' />
           </div>
           <div>attantion</div>
         </div>
-        <div className='column'>
+        <div className='col-2 column center'>
           <div>
             <IcoGet name='question' />
           </div>
           <div>question</div>
+        </div>
+        <div className='col-2 column center'>
+          <div className='xxxx'>
+            <IcoGet name='loader' />
+          </div>
+          <div>loaderi</div>
+        </div>
+        <div className='col-2 column center'>
+          <div className='xxx'>
+            <IcoGet name='loaderbrand' />
+          </div>
+          <div>loaderbrand</div>
         </div>
       </div>
     </section>
