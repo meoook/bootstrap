@@ -1,18 +1,3 @@
-// Media (from small to xl)
-$res-s: 600px;
-$res-m: 768px;
-$res-l: 992px;
-$res-xl: 1200px;
-// Sizing
-$font-s: 1rem;
-$indent: 0.25rem;
-$padding: 10px;
-$radius: 6px;
-$bd: 1px;
-$p-ico: 65px;
-$in-w: 300px;
-// App vals
-$timer: 0.9s;
 // Gray Scale
 $texth: #ffffff;
 $text: #909099;
@@ -37,6 +22,22 @@ $error: #f63868;
 $warning: #f19037;
 $info: #48c7d5;
 
+// App vals
+$timer: 0.9s;
+// Sizing
+$font-s: 1rem;
+$indent: 0.25rem;
+$padding: 10px;
+$radius: 6px;
+$bd: 1px;
+$in-w: 300px;
+// Media (from small to xl)
+$res-s: 600px;
+$res-m: 768px;
+$res-l: 992px;
+$res-xl: 1200px;
+
+// mixins
 %absolute {
   position: absolute;
   bottom: 0;
