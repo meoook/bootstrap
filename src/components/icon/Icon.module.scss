@@ -1,0 +1,11 @@
+.Icon {
+  position: relative;
+  margin: 0 auto;
+  display: inline-flex;
+  color: currentColor;
+  animation: loader-spinner 4s infinite linear;
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+}

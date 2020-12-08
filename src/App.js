@@ -8,19 +8,21 @@ import DisplayGroup from './display/DisplayGroup'
 import DisplaySwitch from './display/DisplaySwitch'
 import DisplayInputs from './display/DisplayInputs'
 import DisplayInputsChoices from './display/DisplayInputsChoices'
+import Loader from './components/loader'
 // import { In } from './input-fields/InputField'
 
 function App() {
   return (
     <div className='container'>
-      <DisplayIcons />
-      <DisplayLoaders />
-      <DisplayGrid />
-      <DisplayButtons />
-      <DisplayGroup />
-      <DisplaySwitch />
-      <DisplayInputs />
-      <DisplayInputsChoices />
+      <Loader />
+      {/* <DisplayIcons /> */}
+      {/* <DisplayLoaders /> */}
+      {/* <DisplayGrid /> */}
+      {/* <DisplayButtons /> */}
+      {/* <DisplayGroup /> */}
+      {/* <DisplaySwitch /> */}
+      {/* <DisplayInputs /> */}
+      {/* <DisplayInputsChoices /> */}
 
       {/* <DisplayPictures /> */}
       {/* Cards, popup, buttons menu (small) */}
