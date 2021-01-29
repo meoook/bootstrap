@@ -4,7 +4,7 @@ import styles from './loader.module.scss'
 /**
  * @render react
  * @name Loader component
- * @description It's a simple svg loader. Size 1em (change fontsize to resize)
+ * @description It's a simple svg loader. Sizing of font-size
  * @example
  * <Loader />
  */

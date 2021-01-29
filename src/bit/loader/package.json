@@ -1,0 +1,22 @@
+{
+  "name": "@bit/bazha.easyui.loader",
+  "version": "0.0.2",
+  "homepage": "https://bit.dev/bazha/easyui/loader",
+  "main": "dist/index.js",
+  "componentId": {
+    "scope": "bazha.easyui",
+    "name": "loader",
+    "version": "0.0.2"
+  },
+  "dependencies": {
+    "react": "^17.0.1"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "license": "SEE LICENSE IN LICENSE",
+  "bit": {
+    "env": {
+      "compiler": "bit.envs/compilers/react@1.0.21"
+    }
+  }
+}

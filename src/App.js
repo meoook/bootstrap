@@ -16,6 +16,7 @@ import DisplayIcoLangs from './display/DisplayIcoLangs'
 import LoaderCar from './components/loader-car'
 import Loader from './components/loader'
 import Icon from './components/ico-get'
+import Icons from './components/icons-get'
 
 function App() {
   return (
@@ -32,13 +33,15 @@ function App() {
         <Icon name='description' />
       </DisplayComponent>
 
+      <DisplayComponent>
+        <Icons name='error' />
+      </DisplayComponent>
+
       <DisplayIcons />
 
       <DisplayIcoLangs />
 
-      <DisplayComponent>
-        <LoaderCar />
-      </DisplayComponent>
+      <LoaderCar />
 
       {/* <DisplayLoaders /> */}
       {/* <DisplayGrid /> */}
