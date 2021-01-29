@@ -6,53 +6,18 @@
 @import './SCSS/loaders.scss';
 
 .container {
-  width: 95wh;
+  width: 95vw;
   max-width: 900px;
   margin: 0 auto;
   padding-top: 30px;
-}
-#grid {
-  .row {
-    border: 2px solid $warning;
-    box-sizing: content-box;
+  svg {
+    border: 1px solid #fff4;
   }
-  .col {
-    background: pink;
-    outline: 1px solid red;
+  & > div {
+    border: 1px solid white;
   }
-}
-
-#inputs {
-  & > .row {
-    height: 105px;
+  & .svg {
+    // color: red;
+    font-size: 24px;
   }
-}
-section {
-  &.svg {
-    color: red;
-    svg {
-      border: 1px solid white;
-    }
-  }
-  &.inputs {
-    & > .row {
-      height: 75vh;
-    }
-  }
-}
-.xxx svg {
-  border: 0 !important;
-  height: 5em;
-  width: 5em;
-  fill: none;
-  animation: spin-svg-z $timer * 15 infinite linear,
-    spin $timer * 5 infinite linear;
-}
-.xxxx svg {
-  border: 0 !important;
-  height: 5em;
-  width: 5em;
-  fill: none;
-  animation: spin-svg-x $timer * 12 infinite ease-out;
-  // spin $timer * 3 infinite linear;
 }
