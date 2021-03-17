@@ -1,3 +1,26 @@
+:root {
+  --color-primary: #fff;
+  --color-secondary: #99a;
+
+  --color-body: #1d1d23;
+  --color-dialog: #202029;
+  --color-head: #23232b;
+
+  --color-input: #282831;
+  --color-active: #2c2c35;
+
+  --color-shadow: #0005;
+  --color-border: #434a56;
+
+  --color-brand: #7545d2;
+  // MSG COLORS
+  --color-msg-default: #007bff;
+  --color-msg-info: #17a2b8;
+  --color-msg-success: #28a745;
+  --color-msg-warning: #ce9c09; //#eab000;
+  --color-msg-error: #dc3545;
+}
+
 // Gray Scale
 $texth: #ffffff;
 $text: #909099;

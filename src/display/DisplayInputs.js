@@ -44,7 +44,7 @@ const DisplayInputs = () => {
         <InputTextField
           val={val1}
           onFinish={finish1}
-          label='Label one'
+          label='Label one asd asd asd as'
           ph='Place holder'
           outColor='default'
           helpText='Field help information'
@@ -62,7 +62,7 @@ const DisplayInputs = () => {
         <InputTextField
           val={val1}
           onFinish={finish1}
-          label='Label three'
+          label='Label three asd asd'
           ph='Place holder'
           icon='search'
           outColor='success'

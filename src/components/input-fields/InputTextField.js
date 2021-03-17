@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import InputFieldButtons from './Components/InputFieldButtons'
-import InputFieldIcon from './Components/InputFieldIcon'
-import InputFieldOutline from './Components/InputFieldOutline'
-import InputFieldError from './Components/InputFieldError'
+import InputFieldButtons from './components/InputFieldButtons'
+import InputFieldIcon from './components/InputFieldIcon'
+import InputFieldOutline from './components/InputFieldOutline'
+import InputFieldError from './components/InputFieldError'
+import styles from './input.module.scss'
 
 const InputTextField = ({
   val = '', // Value setted by program
@@ -24,16 +25,7 @@ const InputTextField = ({
   // Const state
   const required = icon ? false : true
   const placeholder = !required || !label ? ph : ''
-  const outlineColor = outColor
-    ? errorText
-      ? 'error'
-      : disabled
-      ? 'disabled'
-      : loading
-      ? 'warning'
-      : outColor
-    : ''
-  const btnClass = helpText ? ' btns-two' : ' btns-one'
+  const outlineColor = outColor ? (errorText ? 'error' : disabled ? 'disabled' : loading ? 'warning' : outColor) : ''
 
   // utils
   const checkFocus = () => {
@@ -79,9 +71,11 @@ const InputTextField = ({
     if (onFinish) onFinish(inputVal)
   }
 
+  const sumClasses = (...classes) => classes.filter((item) => !!item).join(' ')
+
   return (
-    <div className='input' disabled={disabled} onClick={handleClick}>
-      <div className={`input-root${icon ? ' icon' : ''}${btnClass}`}>
+    <div className={styles.input} disabled={disabled} onClick={handleClick}>
+      <div className={sumClasses(styles.root, icon ? styles.withIcon : '', helpText ? styles.two : styles.one)}>
         <input
           tabIndex='0'
           type='text'

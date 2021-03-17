@@ -1,9 +1,10 @@
-import React from "react"
-import { IcoGet } from "../../icons"
+import React from 'react'
+import Icon from '../../ico-get/index.js'
+import styles from '../input.module.scss'
 
 const InputFieldIcon = ({ icon, error }) => {
   if (!icon) return null
-  return <div className='input-icon'>{error ? <IcoGet name='warning' /> : <IcoGet name={icon} />}</div>
+  return <div className={styles.icon}>{error ? <Icon name='warning' /> : <Icon name={icon} />}</div>
 }
 
 export default InputFieldIcon

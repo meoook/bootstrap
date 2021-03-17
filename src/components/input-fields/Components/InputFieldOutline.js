@@ -1,15 +1,16 @@
 import React from 'react'
+import styles from '../input.module.scss'
 
 const InputFieldOutline = ({ label, color }) => {
   if (!color) return null
   const _className = () => {
     switch (color) {
       case 'error':
-        return { className: 'error' }
+        return { className: styles.error }
       case 'warning':
-        return { className: 'warning' }
+        return { className: styles.warning }
       case 'success':
-        return { className: 'success' }
+        return { className: styles.success }
       default:
         return
     }

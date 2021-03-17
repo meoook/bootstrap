@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  line-height: 1.1;
+  line-height: 1.4;
 }
 
 html {
@@ -15,7 +15,6 @@ body {
   font-family: notosans, sans-serif;
   color: $text;
   font-size: $font-s;
-  line-height: $font-s * 1.43;
   font-weight: 400;
   background: rgba($shadow, 0.95);
 }

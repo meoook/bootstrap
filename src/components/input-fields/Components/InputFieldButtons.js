@@ -1,6 +1,9 @@
 import React from 'react'
-import { IcoGet } from '../../icons'
-import Loader from '../../static/Loader'
+import Icon from '../../ico-get/index.js'
+
+import styles from '../input.module.scss'
+
+import Loader from '@bit/bazha.easyui.loader'
 
 const InputFieldButtons = ({
   canReset,
@@ -16,23 +19,15 @@ const InputFieldButtons = ({
   if (disabled) {
     if (!loading) return null
     return (
-      <div className='input-btns'>
-        <Loader name='svg' />
+      <div className={styles.btns}>
+        <Loader />
       </div>
     )
   }
   return (
-    <div className='input-btns'>
-      {loading ? (
-        <Loader name='svg' />
-      ) : (
-        <ResetToggle avalible={canReset} reset={reset} />
-      )}
-      {hasChoices ? (
-        <MultiToggle toggle={choicesToggle} toggled={choicesToggled} />
-      ) : (
-        <HelpIcon text={helpText} />
-      )}
+    <div className={styles.btns}>
+      {loading ? <Loader /> : <ResetToggle avalible={canReset} reset={reset} />}
+      {hasChoices ? <MultiToggle toggle={choicesToggle} toggled={choicesToggled} /> : <HelpIcon text={helpText} />}
     </div>
   )
 }
@@ -42,8 +37,8 @@ export default InputFieldButtons
 const ResetToggle = ({ avalible, reset }) => {
   if (!avalible || !reset) return null
   return (
-    <button tabIndex='-1' className='input-btns-x btn btn-ico' onClick={reset}>
-      <IcoGet name='close' />
+    <button tabIndex='-1' className={styles.reset + ' btn btn-ico'} onClick={reset}>
+      <Icon name='close' />
     </button>
   )
 }
@@ -52,7 +47,7 @@ const MultiToggle = ({ toggle, toggled }) => {
   const className = `input-btns-m btn btn-ico${toggled ? ' rotate' : ''}`
   return (
     <button tabIndex='-1' className={className} onClick={toggle}>
-      <IcoGet name='arrdown' />
+      <Icon name='arrdown' />
     </button>
   )
 }
@@ -60,9 +55,9 @@ const MultiToggle = ({ toggle, toggled }) => {
 const HelpIcon = ({ text }) => {
   if (!text) return null
   return (
-    <div className='input-btns-h'>
-      <IcoGet name='tultip' />
-      <div className='input-btns-h-text'>{text}</div>
+    <div className={styles.help}>
+      <Icon name='tultip' />
+      <div className={styles.helpText}>{text}</div>
     </div>
   )
 }

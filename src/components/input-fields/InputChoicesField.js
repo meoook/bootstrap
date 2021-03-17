@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
-import InputFieldButtons from './Components/InputFieldButtons'
-import InputFieldIcon from './Components/InputFieldIcon'
-import InputFieldOutline from './Components/InputFieldOutline'
-import InputFieldValues from './Components/InputFieldValues'
-import InputFieldChoices from './Components/InputFieldChoices'
-import InputFieldError from './Components/InputFieldError'
+import InputFieldButtons from './components/InputFieldButtons'
+import InputFieldIcon from './components/InputFieldIcon'
+import InputFieldOutline from './components/InputFieldOutline'
+import InputFieldValues from './components/InputFieldValues'
+import InputFieldChoices from './components/InputFieldChoices'
+import InputFieldError from './components/InputFieldError'
 
 // Util
 
@@ -71,17 +71,8 @@ const InputChoicesField = ({
   // Const state
   const required = icon || vals.length ? false : true
   const placeholder = !required || !label ? ph : ''
-  const outlineColor = outColor
-    ? errorText
-      ? 'error'
-      : disabled
-      ? 'disabled'
-      : loading
-      ? 'warning'
-      : outColor
-    : ''
-  const btnClass =
-    helpText || choices.length || isChoiser ? ' btns-two' : ' btns-one'
+  const outlineColor = outColor ? (errorText ? 'error' : disabled ? 'disabled' : loading ? 'warning' : outColor) : ''
+  const btnClass = helpText || choices.length || isChoiser ? ' btns-two' : ' btns-one'
 
   // utils
   const checkFocus = () => {
@@ -93,13 +84,7 @@ const InputChoicesField = ({
   // Listners
   const choicer = useCallback(
     (value) => {
-      if (choices.length || isChoiser)
-        choicesRef.current = choicesMapper(
-          value,
-          choices,
-          [...vals, val],
-          choicesFilter
-        )
+      if (choices.length || isChoiser) choicesRef.current = choicesMapper(value, choices, [...vals, val], choicesFilter)
     },
     [val, vals, isChoiser, choices, choicesFilter]
   )

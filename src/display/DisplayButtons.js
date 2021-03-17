@@ -1,5 +1,5 @@
 import React from 'react'
-import { IcoGet } from '../components/icons'
+import IcoGet from '../components/ico-get/index'
 
 const DisplayButtons = (props) => {
   return (

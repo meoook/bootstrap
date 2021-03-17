@@ -7,7 +7,7 @@ import iconArray from './icons'
  * @name IcoLang component
  * @description Country flags svg icons. Size 1em (change fontsize to resize)
  * @example
- * <Icon name='search' />
+ * <IcoLang name='german' />
  */
 const IcoLang = ({ name }) => {
   const langIcon = iconArray[name] || iconArray.world

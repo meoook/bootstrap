@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bit/bazha.easyui.loader": "0.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.1",
-    "@bit/bazha.easyui.loader": "file:./src/bit/loader"
+    "react-scripts": "4.0.1"
   },
   "devDependencies": {
     "node-sass": "^4.14.1",
