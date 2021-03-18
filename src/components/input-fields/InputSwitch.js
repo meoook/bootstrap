@@ -1,14 +1,7 @@
 import React from 'react'
-import { IcoGet } from '../icons'
+import Icon from '@bit/bazha.easyui.ico-get'
 
-const InputSwitch = ({
-  val = false,
-  setVal,
-  label = '',
-  type = '',
-  size = '',
-  disabled = false,
-}) => {
+const InputSwitch = ({ val = false, setVal, label = '', type = '', size = '', disabled = false }) => {
   const elemClass = () => {
     let name = 'switch'
     if (type === 'toggle') name += ' switch-toggle'
@@ -25,9 +18,7 @@ const InputSwitch = ({
   return (
     <div className={elemClass()} onClick={toogle} disabled={disabled}>
       <div className='switch-btn'>
-        <div className='switch-mark'>
-          {!['radio', 'toggle'].includes(type) && <IcoGet name='check' />}
-        </div>
+        <div className='switch-mark'>{!['radio', 'toggle'].includes(type) && <Icon name='check' />}</div>
       </div>
       {label ? <label>{label}</label> : null}
     </div>

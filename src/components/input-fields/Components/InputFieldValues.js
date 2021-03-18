@@ -1,5 +1,5 @@
 import React from 'react'
-import { IcoGet } from '../../icons'
+import Icon from '@bit/bazha.easyui.ico-get'
 
 const InputFieldValues = ({ values, removeVal }) => {
   if (!Boolean(values)) return null
@@ -9,7 +9,7 @@ const InputFieldValues = ({ values, removeVal }) => {
         <div key={item} className='input-value'>
           <div>{item}</div>
           <button className='btn btn-nop' onClick={removeVal.bind(this, item)}>
-            <IcoGet name='close' />
+            <Icon name='close' />
           </button>
         </div>
       ))}

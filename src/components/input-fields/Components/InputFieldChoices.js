@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { IcoGet } from '../../icons'
+import Icon from '@bit/bazha.easyui.ico-get'
 
 const InputFieldChoices = ({ dispay, choices, select, loading, close }) => {
   useEffect(() => {
@@ -18,9 +18,7 @@ const InputFieldChoices = ({ dispay, choices, select, loading, close }) => {
       ) : !choices.length ? (
         <div>Нет доступных вариантов</div>
       ) : (
-        choices.map((item) => (
-          <ChoiceItem key={item.name} item={item} select={select} />
-        ))
+        choices.map((item) => <ChoiceItem key={item.name} item={item} select={select} />)
       )}
     </div>
   )
@@ -40,7 +38,7 @@ const ChoiceItem = ({ item, select }) => {
   }
   return (
     <div {...itemProps(item)}>
-      {Boolean(item.icon) && <IcoGet name={item.icon} />}
+      {Boolean(item.icon) && <Icon name={item.icon} />}
       {item.name}
     </div>
   )

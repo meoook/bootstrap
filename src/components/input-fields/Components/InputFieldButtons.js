@@ -1,9 +1,7 @@
 import React from 'react'
-import Icon from '../../ico-get/index.js'
-
 import styles from '../input.module.scss'
-
 import Loader from '@bit/bazha.easyui.loader'
+import Icon from '@bit/bazha.easyui.ico-get'
 
 const InputFieldButtons = ({
   canReset,
