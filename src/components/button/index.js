@@ -1,17 +1,35 @@
 import React from 'react'
-import { IcoGet } from '../icons'
-import style from './button.module.scss'
+import Icon from '@bit/bazha.easyui.ico-get'
+import styles from './button.module.scss'
 
 /**
  * @render react
  * @name Button component
- * @description Material svg icons. Size 1em (change fontsize to resize)
+ * @description Text, with icon, only icon buttons. Colors and size changing with options.
  * @example
  * <Button name='search' />
  */
 const Button = ({ name, icon, color, size, children }) => {
-  const nameClass = ['btn']
-  return <button className={nameClass.join(' ')}>{children}</button>
+  const sumClasses = (...classes) => classes.filter((item) => !!item).join(' ')
+  const colorClass = (c) => {
+    if (c === 'brand') return styles.brand
+    if (c === 'success') return styles.success
+    if (c === 'info') return styles.info
+    if (c === 'warning') return styles.warning
+    if (c === 'error') return styles.error
+  }
+  const sizeClass = (s) => {
+    if (s === 'small') return styles.small
+    if (s === 'big') return styles.big
+  }
+
+  const nameClass = sumClasses(styles.btn, colorClass(color), sizeClass(size))
+  return (
+    <button className={nameClass}>
+      {Boolean(icon) && <Icon name={name} />}
+      {children}
+    </button>
+  )
 }
 
 export default Button
