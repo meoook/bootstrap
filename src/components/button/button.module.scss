@@ -14,6 +14,18 @@ $indent: 0.25rem;
 $font-s: 1rem;
 $padding: 10px;
 
+// button {
+//   font: inherit;
+//   color: inherit;
+//   outline: none;
+//   border: none;
+//   background: transparent;
+// }
+// button {
+//   text-align: center;
+//   cursor: pointer;
+// }
+
 @mixin colors($color, $hover: false) {
   background: $color;
   color: lighten($color, 30%);
@@ -29,19 +41,19 @@ $padding: 10px;
 }
 
 @mixin colors-all {
-  &-brand {
+  &.brand {
     @include colors($brand, true);
   }
-  &-success {
+  &.success {
     @include colors($success, true);
   }
-  &-info {
+  &.info {
     @include colors($info, true);
   }
-  &-warning {
+  &.warning {
     @include colors($warning, true);
   }
-  &-error {
+  &.error {
     @include colors($error, true);
   }
 }
@@ -57,7 +69,7 @@ $padding: 10px;
   box-shadow: 2px 4px 6px rgba($shadow, 0.2);
   text-shadow: 0px 0px 6px rgba($shadow, 0.2);
   border: 1px solid rgba($texth, 0.15);
-  border-radius: $padding;
+  border-radius: $padding / 2;
   @include colors($input, true);
   @include colors-all;
   position: relative;
@@ -65,9 +77,10 @@ $padding: 10px;
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  min-width: 6rem;
+  min-width: 90px;
+  min-height: 24px;
   padding: $padding / 2 $padding;
-  color: currentColor;
+  color: $texth;
   font-weight: bold;
   letter-spacing: 1px;
   white-space: nowrap;
@@ -98,7 +111,7 @@ $padding: 10px;
       transparent
     ) !important;
   }
-  svg {
+  & > * {
     &:first-child {
       margin-right: $padding / 2;
     }
@@ -114,12 +127,12 @@ $padding: 10px;
   &.small {
     font-size: $font-s - $indent / 2;
     min-width: 80px;
-    padding: $padding/4 $padding / 2;
+    padding: 0 $padding;
   }
-  &-nop {
+  &.unsized {
     min-width: 1.5em !important;
   }
-  &-ico {
+  &.circle {
     min-width: 1.2em !important;
     width: 2em !important;
     height: 2em !important;

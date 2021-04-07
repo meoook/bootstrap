@@ -1,108 +1,72 @@
 import React from 'react'
-import IcoGet from '../components/ico-get/index'
+import Button from '../components/button/index'
+import Icon from '@bit/bazha.easyui.ico-get'
 
 const DisplayButtons = (props) => {
   return (
     <section>
       <div className='row around center'>
-        <button>no style</button>
-        <button className='btn'>button btn</button>
-        <button className='btn'>button btn with long text</button>
-        <div className='btn'>div btn</div>
+        <Button>no style</Button>
+        <Button>button btn</Button>
+        <Button>button btn with long text</Button>
       </div>
       <hr />
       <div className='row around center'>
-        <button className='btn'>
-          <IcoGet name='check' />
-          <span>Icon</span>
-        </button>
-        <button className='btn'>
+        <Button icon='check' text='search' />
+        <Button icon='check' text='icon' />
+        <Button>
           <span>Icon long text text</span>
-          <IcoGet name='summary' />
-        </button>
-        <button className='btn'>
-          <IcoGet name='summary' />
+          <Icon name='summary' />
+        </Button>
+        <Button>
+          <Icon name='summary' />
           <span>Icon long text text</span>
-        </button>
-        <div className='btn'>
-          <IcoGet name='search' />
-          <span>div Icon</span>
-        </div>
+        </Button>
+        <Button icon='search' text='div Icon' />
       </div>
       <hr />
       <div className='row around center'>
-        <button className='btn btn-success'>success</button>
-        <button className='btn btn-warning'>warning</button>
-        <button className='btn btn-error'>error</button>
-        <button className='btn btn-info'>info</button>
-        <button className='btn btn-brand'>brand</button>
-        <div className='btn btn-warning'>div warning</div>
+        <Button color='success' text='success' />
+        <Button color='warning' text='warning' />
+        <Button color='error' text='error' />
+        <Button color='info' text='info' />
+        <Button color='brand' text='brand' />
+        <Button color='warning' text='warning' />
       </div>
       <hr />
       <div className='row around center'>
-        <button className='btn small'>small</button>
-        <button className='btn small btn-warning'>small</button>
-        <button className='btn small btn-error'>
-          <IcoGet name='summary' />
-          <span>error</span>
-        </button>
+        <Button size='small' color='warning' text='small' />
+        <Button size='small' color='error' text='small' />
+        <Button size='small' color='info' text='small' icon='summary' />
       </div>
       <hr />
       <div className='row around center'>
-        <button className='btn big btn-info'>
-          <IcoGet name='check' />
-          <span>info</span>
-        </button>
-        <button className='btn big btn-brand'>
-          <IcoGet name='summary' />
-          <span>brand</span>
-        </button>
-        <div className='btn big btn-warning'>
-          <IcoGet name='summary' />
-          <span>div</span>
-        </div>
+        <Button size='big' color='info' icon='check' text='info' />
+        <Button size='big' color='brand' icon='summary' text='brand' />
+        <Button size='big' color='warning' icon='check' text='warning' />
       </div>
       <hr />
       <div className='row around center'>
-        <button className='btn small btn-info' disabled={true}>
-          <IcoGet name='summary' />
-          <span>disabled</span>
-        </button>
-        <button className='btn btn-brand' disabled={true}>
-          <IcoGet name='summary' />
-          <span>disabled</span>
-        </button>
-        <button className='btn big btn-warning' disabled={true}>
-          <IcoGet name='summary' />
-          <span>disabled</span>
-        </button>
+        <Button color='info' text='disabled' icon='summary' disabled={true} size='small' />
+        <Button color='brand' text='disabled' icon='summary' disabled={true} />
+        <Button color='warning' text='disabled' icon='summary' disabled={true} size='big' />
       </div>
       <hr />
+      <div>Кнопка - no min-width</div>
       <div className='row around center'>
-        <button className='btn small btn-nop btn-error'>
-          <IcoGet name='check' />
-        </button>
-        <button className='btn btn-nop'>
-          <IcoGet name='search' />
-        </button>
-        <button className='btn big btn-nop btn-success'>
-          <IcoGet name='summary' />
-        </button>
+        <Button type='unsized' color='error' icon='check' size='small' />
+        <Button type='unsized' icon='search' />
+        <Button type='unsized' color='success' icon='summary' size='big' />
       </div>
       <hr />
+      <div>Кнопка - иконка</div>
       <div className='row around center'>
-        <button className='btn small btn-ico'>&times;</button>
-        <button className='btn btn-ico'>&times;</button>
-        <button className='btn big btn-ico'>&times;</button>
-        <button className='btn small btn-ico'>
-          <IcoGet name='check' />
-        </button>
-        <button className='btn btn-ico'>
-          <IcoGet name='check' />
-        </button>
-        <button className='btn big btn-ico'>
-          <IcoGet name='summary' />
-        </button>
+        <Button type='circle' size='small' text='&times;' />
+        <Button type='circle' text='&times;' />
+        <Button type='circle' size='big' text='&times;' />
+        <Button type='circle' size='small' icon='check' />
+        <Button type='circle' icon='check' />
+        <Button type='circle' size='big' icon='check' />
       </div>
     </section>
   )

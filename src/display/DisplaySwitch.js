@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import InputSwitch from '../components/input-fields/InputSwitch'
+import InputSwitch from '../components/input-switch/index'
 
 const DisplaySwitch = (props) => {
   const [val, setVal] = useState(false)

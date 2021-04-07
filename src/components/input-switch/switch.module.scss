@@ -1,0 +1,113 @@
+$texth: #fff;
+$textd: #505059;
+$shadow: #111;
+
+$brand: #7545e2; // #90caf9
+$input: #282831;
+$timer: 0.9s;
+
+$indent: 0.25rem;
+$font-s: 1rem;
+$padding: 10px;
+
+.switch {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  &.big {
+    font-size: $font-s + $indent;
+  }
+  &.small {
+    font-size: $font-s - $indent;
+  }
+  &.btn {
+    border: 1px solid rgba($texth, 0.15);
+    height: 1em;
+    width: 1em;
+    border-radius: $indent;
+    transition: background-color $timer;
+    box-sizing: content-box;
+  }
+  & .mark {
+    border-radius: 50%;
+    transition: all $timer;
+    opacity: 0;
+    margin: 1px;
+    height: calc(1em - 2px);
+    width: calc(1em - 2px);
+  }
+  & label {
+    margin: 0 $padding;
+    pointer-events: none;
+    font-weight: 500;
+    transition: color $timer;
+  }
+  svg {
+    height: 1em;
+    width: 1em;
+  }
+  &.check {
+    .mark {
+      margin: 0px;
+      line-height: normal;
+    }
+  }
+  &.radio {
+    .btn {
+      border-radius: 50%;
+      background: transparent !important;
+    }
+    .mark {
+      background: $brand;
+    }
+    &[disabled] .mark {
+      background-color: $textd;
+    }
+  }
+  &.toggle {
+    .btn {
+      display: inline-flex;
+      width: 1.6em;
+      border-radius: calc(1.2em / 2);
+    }
+    .mark {
+      opacity: 1;
+      background: $texth;
+    }
+    &.active {
+      .switch-mark {
+        transform: translateX(0.6em);
+      }
+    }
+    &[disabled] .mark {
+      background-color: $textd;
+    }
+  }
+  &:hover {
+    .btn {
+      border-color: rgba($texth, 0.25);
+    }
+    label {
+      color: $texth;
+    }
+  }
+  &.active {
+    color: $texth;
+    .btn {
+      background: $brand;
+    }
+    &:hover {
+      border-color: rgba($texth, 0.1);
+    }
+    .mark {
+      opacity: 1;
+    }
+  }
+  &[disabled] > * {
+    cursor: initial;
+    transform: none !important;
+    color: $textd !important;
+    background-color: transparent !important;
+    border-color: currentColor !important;
+  }
+}

@@ -48,7 +48,8 @@
     flex-grow: 1;
     min-width: 30px;
     padding: var(--padding);
-    &:focus ~ {
+    background: transparent;
+   &:focus ~ {
       label {
         color: var(--color-brand);
       }

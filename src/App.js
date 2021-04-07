@@ -6,7 +6,7 @@ import DisplayIcons from './display/DisplayIcons'
 import DisplayButtons from './display/DisplayButtons'
 // import DisplayPictures from './display/DisplayPictures'
 // import DisplayGroup from './display/DisplayGroup'
-// import DisplaySwitch from './display/DisplaySwitch'
+import DisplaySwitch from './display/DisplaySwitch'
 import DisplayInputs from './display/DisplayInputs'
 // import DisplayInputsChoices from './display/DisplayInputsChoices'
 // import { In } from './input-fields/InputField'
@@ -49,7 +49,7 @@ function App() {
       {/* <DisplayGrid /> */}
       <DisplayButtons />
       {/* <DisplayGroup /> */}
-      {/* <DisplaySwitch /> */}
+      <DisplaySwitch />
       <DisplayInputs />
       {/* <DisplayInputsChoices /> */}
       {/* <DisplayPictures /> */}

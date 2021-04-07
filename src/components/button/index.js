@@ -7,9 +7,9 @@ import styles from './button.module.scss'
  * @name Button component
  * @description Text, with icon, only icon buttons. Colors and size changing with options.
  * @example
- * <Button name='search' />
+ * <Button text='search' />
  */
-const Button = ({ name, icon, color, size, children }) => {
+const Button = ({ text, icon, color, size, type, children, onClick }) => {
   const sumClasses = (...classes) => classes.filter((item) => !!item).join(' ')
   const colorClass = (c) => {
     if (c === 'brand') return styles.brand
@@ -22,12 +22,22 @@ const Button = ({ name, icon, color, size, children }) => {
     if (s === 'small') return styles.small
     if (s === 'big') return styles.big
   }
+  const typeClass = (t) => {
+    if (t === 'circle') return styles.circle
+    if (t === 'unsized') return styles.unsized
+  }
 
-  const nameClass = sumClasses(styles.btn, colorClass(color), sizeClass(size))
+  const nameClass = sumClasses(styles.btn, colorClass(color), sizeClass(size), typeClass(type))
   return (
-    <button className={nameClass}>
-      {Boolean(icon) && <Icon name={name} />}
-      {children}
+    <button className={nameClass} onClick={onClick}>
+      {!!text || !!icon ? (
+        <>
+          {!!icon && <Icon name={icon} />}
+          {!!text && <span>{text}</span>}
+        </>
+      ) : (
+        children
+      )}
     </button>
   )
 }

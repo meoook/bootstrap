@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
-import InputTextField from '../components/input-fields/InputTextField'
-import InputFields from '@bit/bazha.easyui.ico-get'
+import InputTextField from '../components/input-text/index'
+// import InputFields from '@bit/bazha.easyui.inputFields'
 
 const DisplayInputs = () => {
   const [val, setVal] = useState('')
@@ -22,7 +22,7 @@ const DisplayInputs = () => {
   return (
     <section id='inputs'>
       <div className='row around'>
-        <InputFields val={val} chInp={change} onFinish={finish} />
+        <InputTextField val={val} chInp={change} onFinish={finish} />
         <InputTextField val={val} onFinish={finish} ph='Place holder' />
       </div>
       <div className='row around'>

@@ -72,10 +72,11 @@ const InputTextField = ({
   }
 
   const sumClasses = (...classes) => classes.filter((item) => !!item).join(' ')
+  const nameClass = sumClasses(styles.root, icon ? styles.withIcon : '', helpText ? styles.two : styles.one)
 
   return (
     <div className={styles.input} disabled={disabled} onClick={handleClick}>
-      <div className={sumClasses(styles.root, icon ? styles.withIcon : '', helpText ? styles.two : styles.one)}>
+      <div className={nameClass}>
         <input
           tabIndex='0'
           type='text'

@@ -135,7 +135,7 @@
     align-items: stretch;
     border-radius: $radius;
     & > * {
-      @extend %bd;
+      border: $bd solid rgba($texth, 0.15);
       border-radius: 0;
       border-width: $bd;
       padding: $padding / 2 $padding;
@@ -170,104 +170,6 @@
         padding: $padding / 4 $padding/ 2;
       }
     }
-  }
-}
-
-.switch {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  &.big {
-    font-size: $font-s + $indent;
-  }
-  &.small {
-    font-size: $font-s - $indent;
-  }
-  &-btn {
-    @extend %bd;
-    height: 1em;
-    width: 1em;
-    border-radius: $indent;
-    transition: background-color $timer;
-    box-sizing: content-box;
-  }
-  &-mark {
-    border-radius: 50%;
-    transition: all $timer;
-    opacity: 0;
-    margin: 1px;
-    height: calc(1em - 2px);
-    width: calc(1em - 2px);
-  }
-  & label {
-    margin: 0 $padding;
-    pointer-events: none;
-    font-weight: 500;
-    transition: color $timer;
-  }
-  svg {
-    height: 1em;
-    width: 1em;
-  }
-  &-check {
-    .switch-mark {
-      margin: 0px;
-      line-height: normal;
-    }
-  }
-  &-radio {
-    .switch-btn {
-      border-radius: 50%;
-      background: transparent !important;
-    }
-    .switch-mark {
-      background: $brand;
-    }
-    &[disabled] .switch-mark {
-      background-color: $textd;
-    }
-  }
-  &-toggle {
-    .switch-btn {
-      display: inline-flex;
-      width: 1.6em;
-      border-radius: calc(1.2em / 2);
-    }
-    .switch-mark {
-      opacity: 1;
-      background: $texth;
-    }
-    &.active {
-      .switch-mark {
-        transform: translateX(0.6em);
-      }
-    }
-    &[disabled] .switch-mark {
-      background-color: $textd;
-    }
-  }
-  &:hover {
-    .switch-btn {
-      border-color: rgba($texth, 0.25);
-    }
-    label {
-      color: $texth;
-    }
-  }
-  &.active {
-    color: $texth;
-    .switch-btn {
-      background: $brand;
-    }
-    &:hover {
-      border-color: rgba($texth, 0.1);
-    }
-    .switch-mark {
-      opacity: 1;
-    }
-  }
-  &[disabled] > * {
-    @extend %disabled-cfg;
   }
 }
 
